@@ -69,16 +69,32 @@ def placeholder(path: Path, title: str, bullets: list[str], accent: tuple[int, i
     image.save(path)
 
 
-def wait_for_health(url: str, timeout: int = 60) -> None:
+def streamlit_log_tail(process: subprocess.Popen[str], limit: int = 2000) -> str:
+    """Return the most useful available tail of Streamlit startup output."""
+
+    if process.stdout is None:
+        return "No Streamlit stdout was captured."
+    output = process.stdout.read()
+    output = output.strip()
+    if not output:
+        return "No Streamlit startup output was captured."
+    return output[-limit:]
+
+
+def wait_for_health(process: subprocess.Popen[str], url: str, timeout: int = 60) -> None:
     start = time.time()
     while time.time() - start < timeout:
+        if process.poll() is not None:
+            tail = streamlit_log_tail(process)
+            raise RuntimeError(f"Streamlit exited before becoming ready (exit code {process.returncode}).\n{tail}")
         try:
             with urlopen(url, timeout=2) as response:  # noqa: S310 - local health endpoint only
                 if response.status == 200:
                     return
         except Exception:
             time.sleep(0.5)
-    raise TimeoutError(f"Streamlit health endpoint did not become ready: {url}")
+    tail = streamlit_log_tail(process)
+    raise TimeoutError(f"Streamlit health endpoint did not become ready: {url}\n{tail}")
 
 
 def main() -> None:
@@ -101,7 +117,7 @@ def main() -> None:
     ]
     process = subprocess.Popen(command, cwd=args.root, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     try:
-        wait_for_health(f"http://127.0.0.1:{args.port}/_stcore/health")
+        wait_for_health(process, f"http://127.0.0.1:{args.port}/_stcore/health")
         from playwright.sync_api import sync_playwright
 
         with sync_playwright() as playwright:
