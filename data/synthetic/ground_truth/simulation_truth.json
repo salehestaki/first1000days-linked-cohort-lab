@@ -1,0 +1,16 @@
+{
+  "ethical_boundary": "Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.",
+  "latent_variables": [
+    "U_family",
+    "U_child",
+    "U_pregnancy"
+  ],
+  "reference_date": "2026-07-15",
+  "repository_version": "0.1.0",
+  "seed": 20260715,
+  "true_effects": {
+    "maternal_postnatal_age12_literacy": -0.08,
+    "maternal_preconception_age12_literacy": -0.05,
+    "maternal_pregnancy_age12_literacy": -0.2
+  }
+}

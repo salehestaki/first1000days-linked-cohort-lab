@@ -1,0 +1,10 @@
+step,cohort_stage,remaining_n,excluded_n,percentage_retained,exclusion_reason
+1,All generated children,3322,0,100.0,None
+2,Valid parent and family links,3322,0,100.0,Missing or unresolved family/parent links
+3,Computable exposure windows,3322,0,100.0,Missing or invalid conception/birth dates
+4,Observed age-12 literacy outcome,3049,273,91.78,Age-12 literacy missing
+5,Conventional cohort analysis,3049,0,91.78,Blocking linkage issue or missing outcome
+6,Children in multi-child families,2223,826,66.92,Single-child family
+7,Children in exposure-discordant sibling families,1220,1003,36.72,No within-family exposure variation
+8,Sibling fixed-effects analysis,1125,95,33.87,Ineligible sibling set or missing outcome
+9,Prediction evaluation,3049,0,91.78,Missing target or blocking linkage issue

@@ -1,0 +1,1 @@
+rule_id,severity,table_name,record_id,family_id,child_id,parent_id,field_name,observed_value,issue_message,suggested_action,blocks_analysis

@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>First 1,000 Days Synthetic Linked-Cohort Full Demonstration</title><style>
+body{font-family:Arial,sans-serif;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#17252b;line-height:1.5}
+.warning{border:2px solid #7a4d00;background:#fff7e6;padding:1rem;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid #ccd6da;padding:.4rem;text-align:left}th{background:#eef3f5}
+footer{margin-top:3rem;border-top:1px solid #999;padding-top:1rem;font-size:.85rem}
+</style></head><body><h1>First 1,000 Days Synthetic Linked-Cohort Full Demonstration</h1><div class="warning">Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</div>
+<section><h2>Dataset summary</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>families</th>
+      <th>children</th>
+      <th>adverse_trajectory_prevalence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2000</td>
+      <td>3322</td>
+      <td>0.225648</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Cohort flow</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>step</th>
+      <th>cohort_stage</th>
+      <th>remaining_n</th>
+      <th>excluded_n</th>
+      <th>percentage_retained</th>
+      <th>exclusion_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>All generated children</td>
+      <td>3322</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Valid parent and family links</td>
+      <td>3322</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>Missing or unresolved family/parent links</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Computable exposure windows</td>
+      <td>3322</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>Missing or invalid conception/birth dates</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Observed age-12 literacy outcome</td>
+      <td>3049</td>
+      <td>273</td>
+      <td>91.78</td>
+      <td>Age-12 literacy missing</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Conventional cohort analysis</td>
+      <td>3049</td>
+      <td>0</td>
+      <td>91.78</td>
+      <td>Blocking linkage issue or missing outcome</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Children in multi-child families</td>
+      <td>2223</td>
+      <td>826</td>
+      <td>66.92</td>
+      <td>Single-child family</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Children in exposure-discordant sibling families</td>
+      <td>1220</td>
+      <td>1003</td>
+      <td>36.72</td>
+      <td>No within-family exposure variation</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Sibling fixed-effects analysis</td>
+      <td>1125</td>
+      <td>95</td>
+      <td>33.87</td>
+      <td>Ineligible sibling set or missing outcome</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Prediction evaluation</td>
+      <td>3049</td>
+      <td>0</td>
+      <td>91.78</td>
+      <td>Missing target or blocking linkage issue</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Linkage audit</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>severity</th>
+      <th>rule_id</th>
+      <th>table_name</th>
+      <th>issue_count</th>
+      <th>blocking_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>error</td>
+      <td>CH001</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CH002</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CH003</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CH004</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CHR001</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CHR002</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU001</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU002</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU003</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU004</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU005</td>
+      <td>education_assessments</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EVT001</td>
+      <td>parental_mh_events</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>FAM001</td>
+      <td>families</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>FAM002</td>
+      <td>families</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY001</td>
+      <td>children_births</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY002</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY003</td>
+      <td>parental_mh_events</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY004</td>
+      <td>education_assessments</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>OUT001</td>
+      <td>offspring_outcomes</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>OUT002</td>
+      <td>offspring_outcomes</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>PAR001</td>
+      <td>parents</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>PAR002</td>
+      <td>parents</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>SIB001</td>
+      <td>children_births</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>SIB003</td>
+      <td>children_births</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Exposure windows</h2><p>Preconception: conception minus 365 days through conception minus one day; pregnancy: conception through birth; postnatal: birth plus one day through 730 days.</p></section>
+<section><h2>Educational trajectories</h2><p>All values are simulated; group differences follow configured simulation assumptions and are not treatment effects.</p></section>
+<section><h2>Causal-design comparison</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>estimate</th>
+      <th>standard_error</th>
+      <th>ci_low</th>
+      <th>ci_high</th>
+      <th>n_children</th>
+      <th>n_families</th>
+      <th>discordant_family_count</th>
+      <th>exposure_variation</th>
+      <th>simulation_truth</th>
+      <th>absolute_error_from_truth</th>
+      <th>sample_fraction_of_naive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Naive cohort</td>
+      <td>-0.701084</td>
+      <td>0.038855</td>
+      <td>-0.777240</td>
+      <td>-0.624928</td>
+      <td>3049</td>
+      <td>1921</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.2</td>
+      <td>0.501084</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>Adjusted cohort</td>
+      <td>-0.419959</td>
+      <td>0.032999</td>
+      <td>-0.484637</td>
+      <td>-0.355281</td>
+      <td>3049</td>
+      <td>1921</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.2</td>
+      <td>0.219959</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>Sibling fixed effects</td>
+      <td>-0.175798</td>
+      <td>0.046733</td>
+      <td>-0.267394</td>
+      <td>-0.084202</td>
+      <td>1125</td>
+      <td>507</td>
+      <td>507.0</td>
+      <td>0.241919</td>
+      <td>-0.2</td>
+      <td>0.024202</td>
+      <td>0.368973</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Prediction evaluation</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>n</th>
+      <th>prevalence</th>
+      <th>auroc</th>
+      <th>average_precision</th>
+      <th>brier_score</th>
+      <th>log_loss</th>
+      <th>calibration_intercept</th>
+      <th>calibration_slope</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>767</td>
+      <td>0.230769</td>
+      <td>0.720147</td>
+      <td>0.457992</td>
+      <td>0.212109</td>
+      <td>0.611985</td>
+      <td>-1.193768</td>
+      <td>1.089106</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>767</td>
+      <td>0.230769</td>
+      <td>0.711620</td>
+      <td>0.472763</td>
+      <td>0.155900</td>
+      <td>0.484726</td>
+      <td>0.026150</td>
+      <td>0.993994</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Calibration</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>bin</th>
+      <th>mean_predicted_probability</th>
+      <th>observed_fraction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>1</td>
+      <td>0.182093</td>
+      <td>0.064935</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>2</td>
+      <td>0.257587</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>3</td>
+      <td>0.311788</td>
+      <td>0.105263</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>4</td>
+      <td>0.368127</td>
+      <td>0.103896</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>5</td>
+      <td>0.425911</td>
+      <td>0.168831</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>6</td>
+      <td>0.485506</td>
+      <td>0.197368</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>7</td>
+      <td>0.544075</td>
+      <td>0.233766</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>8</td>
+      <td>0.598822</td>
+      <td>0.368421</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>9</td>
+      <td>0.662982</td>
+      <td>0.350649</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>10</td>
+      <td>0.764155</td>
+      <td>0.571429</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>1</td>
+      <td>0.088404</td>
+      <td>0.103896</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>2</td>
+      <td>0.113175</td>
+      <td>0.090909</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>3</td>
+      <td>0.131294</td>
+      <td>0.144737</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>4</td>
+      <td>0.145910</td>
+      <td>0.181818</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>5</td>
+      <td>0.161651</td>
+      <td>0.090909</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>6</td>
+      <td>0.182278</td>
+      <td>0.184211</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>7</td>
+      <td>0.213303</td>
+      <td>0.233766</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>8</td>
+      <td>0.266643</td>
+      <td>0.302632</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>9</td>
+      <td>0.362954</td>
+      <td>0.415584</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>10</td>
+      <td>0.589892</td>
+      <td>0.558442</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Ethics and limitations</h2><p>No real records are present. No clinical, educational, public-sector, or individual decision use is supported.</p></section><section><h2>Run metadata</h2><pre>{
+  &quot;analysis_configuration_hash&quot;: &quot;a988a08f3822d1a4d3e7a667921cd5d11cf31d3c7a44df109ec923d2cb48cc46&quot;,
+  &quot;creation_timestamp_utc&quot;: &quot;2026-07-15T18:23:46.841203+00:00&quot;,
+  &quot;input_file_hashes&quot;: {
+    &quot;children_births.csv&quot;: &quot;4089fad70439e6a8fe733664f9473c713ca547b012abd65be05e2d9132799f00&quot;,
+    &quot;education_assessments.csv&quot;: &quot;ed4e900eb92d4638e4f10773327b191cd223f6a7323e36348b644756d64bd18b&quot;,
+    &quot;families.csv&quot;: &quot;594687fb9938db614aab92d02ec0e1673f8e2e43b14cf7183c98aa214196ba0d&quot;,
+    &quot;offspring_outcomes.csv&quot;: &quot;fd322ebbde2521863579accb74eba3f98520af5f89b50c3329cf0b0f60494321&quot;,
+    &quot;parental_mh_events.csv&quot;: &quot;2d050a8280158bf6c32495f7fe08a9409b056c714c4bd983276dce21f0337794&quot;,
+    &quot;parents.csv&quot;: &quot;bf6f38f1f4511eafad7dc69bb70678e67e867d2cb5254bdc318df2e59e7fa169&quot;
+  },
+  &quot;number_of_children&quot;: 3322,
+  &quot;number_of_exposure_discordant_sibling_sets&quot;: 597,
+  &quot;number_of_families&quot;: 2000,
+  &quot;number_of_sibling_sets&quot;: 1104,
+  &quot;repository_version&quot;: &quot;0.1.0&quot;,
+  &quot;row_count&quot;: 3322,
+  &quot;rulebook_version&quot;: &quot;1.0.0&quot;,
+  &quot;seed&quot;: 20260715
+}</pre></section>
+<footer>Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</footer></body></html>

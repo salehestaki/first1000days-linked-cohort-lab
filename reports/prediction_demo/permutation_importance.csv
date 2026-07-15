@@ -1,0 +1,35 @@
+model,feature,importance_mean,importance_std,interpretation
+Regularised logistic regression,socioeconomic_quintile_demo,0.08989434709055506,0.008463705312762278,Predictive importance is not causal importance.
+Regularised logistic regression,protective_context_score_demo,0.047479970634236625,0.003911710868526952,Predictive importance is not causal importance.
+Regularised logistic regression,maternal_pregnancy_exposure_demo,0.013511443071914134,0.00559485833398428,Predictive importance is not causal importance.
+Regularised logistic regression,paternal_pregnancy_window_exposure_demo,0.0026078074627341463,0.0009029497772031972,Predictive importance is not causal importance.
+Regularised logistic regression,paternal_preconception_exposure_demo,0.0023205336908295924,0.0015623971436962906,Predictive importance is not causal importance.
+Regularised logistic regression,region_code,0.0020045325417344198,0.0026405159512422715,Predictive importance is not causal importance.
+Regularised logistic regression,area_context,0.0020045325417344198,0.0026405159512422715,Predictive importance is not causal importance.
+Regularised logistic regression,child_sex_recorded,0.0015193590602955442,0.0017719845066767731,Predictive importance is not causal importance.
+Regularised logistic regression,maternal_age_at_first_child_demo,0.0010820645408407363,0.0012105205553665887,Predictive importance is not causal importance.
+Regularised logistic regression,maternal_postnatal_0_2_exposure_demo,0.0006766893293754054,0.00022338955226047945,Predictive importance is not causal importance.
+Regularised logistic regression,birth_order,0.0002138593635289121,0.00028161441476091373,Predictive importance is not causal importance.
+Regularised logistic regression,paternal_age_at_first_child_demo,1.2767723195768651e-05,1.627571742983301e-05,Predictive importance is not causal importance.
+Regularised logistic regression,paternal_postnatal_0_2_exposure_demo,-0.00034153659548667264,0.00040296783175041437,Predictive importance is not causal importance.
+Regularised logistic regression,maternal_preconception_exposure_demo,-0.0005298605126240844,0.00015972416614883658,Predictive importance is not causal importance.
+Regularised logistic regression,birthweight_g_demo,-0.0007086086373647715,0.0007517251161826489,Predictive importance is not causal importance.
+Regularised logistic regression,gestational_age_weeks_demo,-0.0017619458010150375,0.0020217398403365246,Predictive importance is not causal importance.
+Regularised logistic regression,early_support_contact_demo,-0.0019151584793641874,0.0009183779007840725,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,socioeconomic_quintile_demo,0.11174470937470078,0.010383343775055948,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,protective_context_score_demo,0.05526030195665362,0.004895096203334792,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,area_context,0.012435762392671301,0.005113673876928485,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,birthweight_g_demo,0.009735388936767841,0.002877288821949831,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,paternal_age_at_first_child_demo,0.009275750901720429,0.004976941267670386,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,paternal_pregnancy_window_exposure_demo,0.003924478917297118,0.0004194505563189226,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,maternal_pregnancy_exposure_demo,0.0023572408950174317,0.0048924495680993255,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,child_sex_recorded,0.0011075999872322735,0.008353696060864363,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,maternal_postnatal_0_2_exposure_demo,0.0006224265057933239,0.0009034122817261995,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,paternal_postnatal_0_2_exposure_demo,0.0005952950940023571,0.0006744006689981106,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,paternal_preconception_exposure_demo,0.0005873152670050619,0.0007777183769351278,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,maternal_preconception_exposure_demo,9.575792396824638e-05,9.479550834643017e-05,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,region_code,0.0,0.0,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,maternal_age_at_first_child_demo,-0.00020109164033325447,0.0029723337752574058,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,early_support_contact_demo,-0.0006639216061795258,0.0003399144042919517,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,gestational_age_weeks_demo,-0.0010373775096555644,0.0006952110280484466,Predictive importance is not causal importance.
+HistGradientBoosting benchmark,birth_order,-0.002556736569951109,0.0027855874196511974,Predictive importance is not causal importance.

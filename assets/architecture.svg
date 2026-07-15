@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="930" viewBox="0 0 1200 930" role="img" aria-labelledby="title desc">
+<title id="title">Synthetic linked-cohort laboratory architecture</title>
+<desc id="desc">Eight vertically connected stages from synthetic source generation through dashboard and reports.</desc>
+<style>.box{fill:#f3f6f7;stroke:#315f72;stroke-width:2}.text{font:22px Arial,sans-serif;fill:#17252b;text-anchor:middle}.arrow{stroke:#315f72;stroke-width:3;marker-end:url(#m)}</style>
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#315f72"/></marker></defs>
+<rect x="250" y="30" width="700" height="70" rx="12" class="box"/><text x="600" y="73" class="text">Synthetic source-table generator</text>
+<line x1="600" y1="100" x2="600" y2="135" class="arrow"/>
+<rect x="250" y="140" width="700" height="70" rx="12" class="box"/><text x="600" y="183" class="text">Schema validation</text>
+<line x1="600" y1="210" x2="600" y2="245" class="arrow"/>
+<rect x="250" y="250" width="700" height="70" rx="12" class="box"/><text x="600" y="293" class="text">Relational linkage and integrity audit</text>
+<line x1="600" y1="320" x2="600" y2="355" class="arrow"/>
+<rect x="250" y="360" width="700" height="70" rx="12" class="box"/><text x="600" y="403" class="text">First-1,000-days exposure-window derivation</text>
+<line x1="600" y1="430" x2="600" y2="465" class="arrow"/>
+<rect x="250" y="470" width="700" height="70" rx="12" class="box"/><text x="600" y="513" class="text">Analysis-cohort and sibling-cohort construction</text>
+<line x1="600" y1="540" x2="600" y2="575" class="arrow"/>
+<rect x="250" y="580" width="700" height="70" rx="12" class="box"/><text x="600" y="623" class="text">Educational trajectories</text>
+<line x1="600" y1="650" x2="600" y2="685" class="arrow"/>
+<rect x="250" y="690" width="700" height="85" rx="12" class="box"/><text x="600" y="727" class="text">Causal-design comparison + grouped</text><text x="600" y="755" class="text">prediction evaluation</text>
+<line x1="600" y1="775" x2="600" y2="810" class="arrow"/>
+<rect x="250" y="815" width="700" height="70" rx="12" class="box"/><text x="600" y="858" class="text">Dashboard and reproducible reports</text>
+</svg>

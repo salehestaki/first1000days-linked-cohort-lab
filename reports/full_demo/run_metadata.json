@@ -1,0 +1,20 @@
+{
+  "analysis_configuration_hash": "a988a08f3822d1a4d3e7a667921cd5d11cf31d3c7a44df109ec923d2cb48cc46",
+  "creation_timestamp_utc": "2026-07-15T18:23:46.841203+00:00",
+  "input_file_hashes": {
+    "children_births.csv": "4089fad70439e6a8fe733664f9473c713ca547b012abd65be05e2d9132799f00",
+    "education_assessments.csv": "ed4e900eb92d4638e4f10773327b191cd223f6a7323e36348b644756d64bd18b",
+    "families.csv": "594687fb9938db614aab92d02ec0e1673f8e2e43b14cf7183c98aa214196ba0d",
+    "offspring_outcomes.csv": "fd322ebbde2521863579accb74eba3f98520af5f89b50c3329cf0b0f60494321",
+    "parental_mh_events.csv": "2d050a8280158bf6c32495f7fe08a9409b056c714c4bd983276dce21f0337794",
+    "parents.csv": "bf6f38f1f4511eafad7dc69bb70678e67e867d2cb5254bdc318df2e59e7fa169"
+  },
+  "number_of_children": 3322,
+  "number_of_exposure_discordant_sibling_sets": 597,
+  "number_of_families": 2000,
+  "number_of_sibling_sets": 1104,
+  "repository_version": "0.1.0",
+  "row_count": 3322,
+  "rulebook_version": "1.0.0",
+  "seed": 20260715
+}

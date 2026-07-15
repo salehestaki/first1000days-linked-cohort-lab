@@ -1,0 +1,13 @@
+repository_version: "0.1.0"
+rulebook_version: "1.0.0"
+primary_exposure: maternal_pregnancy_exposure_demo
+primary_outcome: age12_literacy_standardised_score_demo
+prediction_target: adverse_educational_trajectory_demo
+prediction_target_definition:
+  low_age12_threshold: -1.0
+  decline_age8_to_age12_threshold: 0.75
+development_fraction: 0.75
+random_state: 20260715
+subgroup_min_n: 40
+subgroup_min_positive: 8
+plausible_score_range: [-4.0, 4.0]

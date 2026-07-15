@@ -1,0 +1,1 @@
+Research and methods demonstration only: fully synthetic linked-cohort construction, audit, sibling-design comparison, and aggregate educational-risk evaluation. No real data or decision use.

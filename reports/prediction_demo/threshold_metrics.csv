@@ -1,0 +1,5 @@
+model,threshold,sensitivity,specificity,positive_predictive_value,negative_predictive_value,true_positive,false_positive,true_negative,false_negative,warning
+Regularised logistic regression,0.2,0.9774011299435028,0.07796610169491526,0.2412831241283124,0.92,173,544,46,4,Thresholds are arbitrary demonstrations and are not intervention thresholds.
+Regularised logistic regression,0.35,0.8531073446327684,0.3677966101694915,0.2881679389312977,0.8930041152263375,151,373,217,26,Thresholds are arbitrary demonstrations and are not intervention thresholds.
+HistGradientBoosting benchmark,0.2,0.6384180790960452,0.688135593220339,0.38047138047138046,0.8638297872340426,113,184,406,64,Thresholds are arbitrary demonstrations and are not intervention thresholds.
+HistGradientBoosting benchmark,0.35,0.3615819209039548,0.8983050847457628,0.5161290322580645,0.8242612752721618,64,60,530,113,Thresholds are arbitrary demonstrations and are not intervention thresholds.

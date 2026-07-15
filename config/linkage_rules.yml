@@ -1,0 +1,7 @@
+rulebook_version: "1.0.0"
+blocking_severities: [error]
+chronology:
+  minimum_parent_age_years: 14
+  maximum_parent_age_years: 65
+  singleton_pregnancy_overlap_days: 140
+assessment_age_tolerance_days: 120

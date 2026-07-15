@@ -1,0 +1,17 @@
+{
+  "analysis_configuration_hash": "a988a08f3822d1a4d3e7a667921cd5d11cf31d3c7a44df109ec923d2cb48cc46",
+  "blocking_issue_count": 99,
+  "creation_timestamp_utc": "2026-07-15T18:23:34.545890+00:00",
+  "input_file_hashes": {
+    "children_births_corrupted.csv": "7b579a17f41ac1c555f6fe9355d9c6ee043dcf7340940695e3c3d29ab3872ad2",
+    "education_assessments_corrupted.csv": "f492592d09fcce9e36090a3bb23b890d936f437e7e746ce052f16dca6e580280",
+    "families_corrupted.csv": "6800e6b24388e01a3f4687df0a21eebf59a040131a5f242d143cd54f328b569e",
+    "offspring_outcomes_corrupted.csv": "eef59dfcb89e809974748a65a938efba647932798d7b57e03dfcc55bb552a8b9",
+    "parental_mh_events_corrupted.csv": "52141df0abff260309a9bfc78e28000317af1c6647f77f504048b99eb539f57b",
+    "parents_corrupted.csv": "6133eef3056c14a9177f73ee72d25392113c3f712089b42c0c945e73a223e162"
+  },
+  "issue_count": 99,
+  "repository_version": "0.1.0",
+  "rulebook_version": "1.0.0",
+  "seed": 20260715
+}

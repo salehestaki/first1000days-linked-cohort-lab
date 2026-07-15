@@ -1,0 +1,33 @@
+rule_id,short_name,severity,source_table,rationale,suggested_remediation,blocks_analysis
+CH001,Missing linked mother,error,children_births,Missing linked mother,Link to an existing mother record,True
+CH002,Missing linked father,error,children_births,Missing linked father,Link to an existing father record,True
+CH003,Parent belongs to another family,error,children_births,Parent belongs to another family,Correct the family-parent relation,True
+CH004,Mother and father identifiers identical,error,children_births,Mother and father identifiers identical,Use distinct role-specific parent keys,True
+CHR001,Conception after birth,error,children_births,Conception after birth,Correct chronology,True
+CHR002,Gestational chronology inconsistent,error,children_births,Gestational chronology inconsistent,Reconcile gestation and dates,True
+EDU001,Invalid assessment age,error,education_assessments,Invalid assessment age,"Use age 8, 10, 12, or 14",True
+EDU002,Observed assessment missing score,error,education_assessments,Observed assessment missing score,Populate score or mark missing,True
+EDU003,Missing assessment has score,error,education_assessments,Missing assessment has score,Clear score or mark observed,True
+EDU004,Score outside plausible range,error,education_assessments,Score outside plausible range,Review standardised score,True
+EDU005,Duplicate child-age-domain assessment,error,education_assessments,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU006,Assessment before birth or age inconsistent,error,education_assessments,Assessment before birth or age inconsistent,Review assessment date,True
+EVT001,Invalid parental event date,error,parental_mh_events,Invalid parental event date,Provide a valid synthetic date,True
+EVT002,Parental event before plausible lifespan,error,parental_mh_events,Parental event before plausible lifespan,Review event and parent dates,True
+EXP001,Invalid exposure window,error,exposure_windows,Invalid exposure window,Correct window boundaries,True
+EXP002,Duplicate exposure row,error,exposure_windows,Duplicate exposure row,Deduplicate child-parent-window rows,True
+FAM001,Invalid region category,error,families,Invalid region category,"Use REGION_A, REGION_B, or REGION_C",True
+FAM002,Invalid socioeconomic quintile,error,families,Invalid socioeconomic quintile,Use an integer from 1 to 5,True
+KEY001,Duplicate child identifier,error,children_births,Duplicate child identifier,Resolve duplicate primary keys,True
+KEY002,Missing family identifier,error,children_births,Missing family identifier,Restore the synthetic family key,True
+KEY003,Duplicate event identifier,error,parental_mh_events,Duplicate event identifier,Resolve duplicate event keys,True
+KEY004,Duplicate assessment identifier,error,education_assessments,Duplicate assessment identifier,Resolve duplicate assessment keys,True
+OUT001,Outcome event before birth,error,offspring_outcomes,Outcome event before birth,Correct event chronology,True
+OUT002,Outcome observation/date inconsistency,error,offspring_outcomes,Outcome observation/date inconsistency,Reconcile observed flag and date,True
+OUT003,Outcome age/date inconsistency,error,offspring_outcomes,Outcome age/date inconsistency,Recalculate event age,True
+OUT004,Censor age younger than event age,error,offspring_outcomes,Censor age younger than event age,Review censoring fields,True
+PAR001,Invalid parent role,error,parents,Invalid parent role,Use mother or father,True
+PAR002,Duplicate parent role within family,error,parents,Duplicate parent role within family,Retain one parent per role,True
+SIB001,Duplicate singleton birth order,error,children_births,Duplicate singleton birth order,Restore sequential birth order,True
+SIB002,Non-sequential birth order,warning,children_births,Non-sequential birth order,Review sibling ordering,False
+SIB003,Inconsistent sibling parent links,error,children_births,Inconsistent sibling parent links,Reconcile parent links,True
+SIB004,Implausibly overlapping singleton pregnancies,error,children_births,Implausibly overlapping singleton pregnancies,Review sibling chronology,True

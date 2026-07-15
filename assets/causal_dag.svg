@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="720" viewBox="0 0 1300 720" role="img" aria-labelledby="title desc">
+<title id="title">Synthetic causal directed acyclic graph</title>
+<desc id="desc">Shared family liability and socioeconomic context affect parental exposures and educational outcomes; pregnancy-specific factors affect maternal pregnancy exposure and outcome.</desc>
+<style>.node{fill:#f3f6f7;stroke:#315f72;stroke-width:2}.latent{fill:#fff1d6;stroke:#7a4d00;stroke-width:3;stroke-dasharray:8 5}.txt{font:20px Arial,sans-serif;fill:#17252b;text-anchor:middle}.edge{stroke:#4b626c;stroke-width:2.5;marker-end:url(#a)}</style>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4b626c"/></marker></defs>
+<ellipse cx="190" cy="130" rx="150" ry="55" class="latent"/><text x="190" y="120" class="txt">Shared family liability</text><text x="190" y="147" class="txt">unobserved in analyses</text>
+<rect x="70" y="310" width="240" height="75" rx="12" class="node"/><text x="190" y="355" class="txt">Socioeconomic context</text>
+<rect x="500" y="70" width="250" height="75" rx="12" class="node"/><text x="625" y="115" class="txt">Maternal pregnancy exposure</text>
+<rect x="500" y="220" width="250" height="75" rx="12" class="node"/><text x="625" y="265" class="txt">Paternal exposure</text>
+<rect x="500" y="370" width="250" height="75" rx="12" class="node"/><text x="625" y="415" class="txt">Pregnancy-specific factors</text>
+<rect x="500" y="520" width="250" height="75" rx="12" class="node"/><text x="625" y="565" class="txt">Early-life support</text>
+<rect x="970" y="260" width="260" height="95" rx="12" class="node"/><text x="1100" y="300" class="txt">Synthetic educational</text><text x="1100" y="328" class="txt">outcome</text>
+<line x1="335" y1="130" x2="500" y2="108" class="edge"/><line x1="325" y1="150" x2="500" y2="250" class="edge"/><line x1="315" y1="165" x2="970" y2="285" class="edge"/>
+<line x1="310" y1="335" x2="500" y2="120" class="edge"/><line x1="310" y1="348" x2="500" y2="252" class="edge"/><line x1="310" y1="365" x2="500" y2="555" class="edge"/><line x1="310" y1="370" x2="970" y2="330" class="edge"/>
+<line x1="750" y1="108" x2="970" y2="285" class="edge"/><line x1="750" y1="258" x2="970" y2="300" class="edge"/><line x1="750" y1="405" x2="970" y2="322" class="edge"/><line x1="750" y1="555" x2="970" y2="340" class="edge"/><line x1="625" y1="370" x2="625" y2="145" class="edge"/>
+</svg>

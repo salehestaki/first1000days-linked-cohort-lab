@@ -1,0 +1,100 @@
+rule_id,severity,table_name,record_id,family_id,child_id,parent_id,field_name,observed_value,issue_message,suggested_action,blocks_analysis
+CH001,error,children_births,CH-000021,FAM-000014,CH-000021,M-990020,mother_id,M-990020,Mother link does not resolve,Link to an existing mother record,True
+CH001,error,children_births,CH-000022,FAM-000014,CH-000022,M-990021,mother_id,M-990021,Mother link does not resolve,Link to an existing mother record,True
+CH001,error,children_births,CH-000023,FAM-000015,CH-000023,M-990022,mother_id,M-990022,Mother link does not resolve,Link to an existing mother record,True
+CH002,error,children_births,CH-000031,FAM-000020,CH-000031,P-990030,father_id,P-990030,Father link does not resolve,Link to an existing father record,True
+CH002,error,children_births,CH-000032,FAM-000021,CH-000032,P-990031,father_id,P-990031,Father link does not resolve,Link to an existing father record,True
+CH002,error,children_births,CH-000033,FAM-000021,CH-000033,P-990032,father_id,P-990032,Father link does not resolve,Link to an existing father record,True
+CH003,error,children_births,CH-000041,FAM-000025,CH-000041,M-000006,mother_id,M-000006,Linked mother belongs to another family,Correct the family-parent relation,True
+CH003,error,children_births,CH-000042,FAM-000026,CH-000042,M-000007,mother_id,M-000007,Linked mother belongs to another family,Correct the family-parent relation,True
+CH003,error,children_births,CH-000043,FAM-000026,CH-000043,M-000001,mother_id,M-000001,Linked mother belongs to another family,Correct the family-parent relation,True
+CH004,error,children_births,CH-000051,FAM-000031,CH-000051,M-000031,"mother_id,father_id",M-000031,Mother and father identifiers are identical,Use distinct role-specific parent keys,True
+CH004,error,children_births,CH-000052,FAM-000032,CH-000052,M-000032,"mother_id,father_id",M-000032,Mother and father identifiers are identical,Use distinct role-specific parent keys,True
+CH004,error,children_births,CH-000053,FAM-000032,CH-000053,M-000032,"mother_id,father_id",M-000032,Mother and father identifiers are identical,Use distinct role-specific parent keys,True
+CHR001,error,children_births,CH-000061,FAM-000038,CH-000061,,conception_date_demo,2002-08-03,Conception occurs after birth,Correct chronology,True
+CHR001,error,children_births,CH-000062,FAM-000038,CH-000062,,conception_date_demo,2004-04-16,Conception occurs after birth,Correct chronology,True
+CHR001,error,children_births,CH-000063,FAM-000039,CH-000063,,conception_date_demo,2006-04-16,Conception occurs after birth,Correct chronology,True
+CHR002,error,children_births,CH-000061,FAM-000038,CH-000061,,gestational_age_weeks_demo,37,Gestational age does not match conception and birth dates,Reconcile gestation and dates,True
+CHR002,error,children_births,CH-000062,FAM-000038,CH-000062,,gestational_age_weeks_demo,41,Gestational age does not match conception and birth dates,Reconcile gestation and dates,True
+CHR002,error,children_births,CH-000063,FAM-000039,CH-000063,,gestational_age_weeks_demo,40,Gestational age does not match conception and birth dates,Reconcile gestation and dates,True
+EDU001,error,education_assessments,EDU-000011,,CH-000002,,assessment_age_years,9,Assessment age is invalid,"Use age 8, 10, 12, or 14",True
+EDU001,error,education_assessments,EDU-000012,,CH-000002,,assessment_age_years,9,Assessment age is invalid,"Use age 8, 10, 12, or 14",True
+EDU001,error,education_assessments,EDU-000013,,CH-000002,,assessment_age_years,9,Assessment age is invalid,"Use age 8, 10, 12, or 14",True
+EDU002,error,education_assessments,EDU-000023,,CH-000003,,standardised_score_demo,<missing>,Observed assessment has no score,Populate score or mark missing,True
+EDU002,error,education_assessments,EDU-000024,,CH-000003,,standardised_score_demo,<missing>,Observed assessment has no score,Populate score or mark missing,True
+EDU002,error,education_assessments,EDU-000025,,CH-000004,,standardised_score_demo,<missing>,Observed assessment has no score,Populate score or mark missing,True
+EDU003,error,education_assessments,EDU-000067,,CH-000009,,standardised_score_demo,0.25,Missing assessment contains a score,Clear score or mark observed,True
+EDU003,error,education_assessments,EDU-000070,,CH-000009,,standardised_score_demo,0.25,Missing assessment contains a score,Clear score or mark observed,True
+EDU003,error,education_assessments,EDU-000071,,CH-000009,,standardised_score_demo,0.25,Missing assessment contains a score,Clear score or mark observed,True
+EDU004,error,education_assessments,EDU-000031,,CH-000004,,standardised_score_demo,8.0,Score lies outside configured synthetic range,Review standardised score,True
+EDU004,error,education_assessments,EDU-000032,,CH-000004,,standardised_score_demo,8.0,Score lies outside configured synthetic range,Review standardised score,True
+EDU004,error,education_assessments,EDU-000033,,CH-000005,,standardised_score_demo,8.0,Score lies outside configured synthetic range,Review standardised score,True
+EDU005,error,education_assessments,EDU-000001,,CH-000001,,"child_id,assessment_age_years,assessment_domain",CH-000001|8|literacy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000001,,CH-000001,,"child_id,assessment_age_years,assessment_domain",CH-000001|8|literacy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000002,,CH-000001,,"child_id,assessment_age_years,assessment_domain",CH-000001|8|numeracy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000002,,CH-000001,,"child_id,assessment_age_years,assessment_domain",CH-000001|8|numeracy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000003,,CH-000001,,"child_id,assessment_age_years,assessment_domain",CH-000001|10|literacy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000003,,CH-000001,,"child_id,assessment_age_years,assessment_domain",CH-000001|10|literacy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000011,,CH-000002,,"child_id,assessment_age_years,assessment_domain",CH-000002|9|literacy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EDU005,error,education_assessments,EDU-000013,,CH-000002,,"child_id,assessment_age_years,assessment_domain",CH-000002|9|literacy_demo,Duplicate child-age-domain assessment,Deduplicate repeated assessment,True
+EVT001,error,parental_mh_events,PMH-000011,,,M-000018,event_date_demo,not-a-date,Event date is not parseable,Provide a valid synthetic date,True
+EVT001,error,parental_mh_events,PMH-000012,,,M-000020,event_date_demo,not-a-date,Event date is not parseable,Provide a valid synthetic date,True
+EVT001,error,parental_mh_events,PMH-000013,,,M-000020,event_date_demo,not-a-date,Event date is not parseable,Provide a valid synthetic date,True
+FAM001,error,families,FAM-000001,FAM-000001,,,region_code,REGION_INVALID,Invalid region category,"Use REGION_A, REGION_B, or REGION_C",True
+FAM001,error,families,FAM-000002,FAM-000002,,,region_code,REGION_INVALID,Invalid region category,"Use REGION_A, REGION_B, or REGION_C",True
+FAM001,error,families,FAM-000003,FAM-000003,,,region_code,REGION_INVALID,Invalid region category,"Use REGION_A, REGION_B, or REGION_C",True
+FAM002,error,families,FAM-000004,FAM-000004,,,socioeconomic_quintile_demo,9,Socioeconomic quintile must be 1-5,Use an integer from 1 to 5,True
+FAM002,error,families,FAM-000005,FAM-000005,,,socioeconomic_quintile_demo,9,Socioeconomic quintile must be 1-5,Use an integer from 1 to 5,True
+FAM002,error,families,FAM-000006,FAM-000006,,,socioeconomic_quintile_demo,9,Socioeconomic quintile must be 1-5,Use an integer from 1 to 5,True
+KEY001,error,children_births,CH-000001,,,,child_id,CH-000001,Duplicate primary key CH-000001,Resolve duplicate primary keys,True
+KEY001,error,children_births,CH-000001,,,,child_id,CH-000001,Duplicate primary key CH-000001,Resolve duplicate primary keys,True
+KEY001,error,children_births,CH-000002,,,,child_id,CH-000002,Duplicate primary key CH-000002,Resolve duplicate primary keys,True
+KEY001,error,children_births,CH-000002,,,,child_id,CH-000002,Duplicate primary key CH-000002,Resolve duplicate primary keys,True
+KEY001,error,children_births,CH-000003,,,,child_id,CH-000003,Duplicate primary key CH-000003,Resolve duplicate primary keys,True
+KEY001,error,children_births,CH-000003,,,,child_id,CH-000003,Duplicate primary key CH-000003,Resolve duplicate primary keys,True
+KEY002,error,children_births,CH-000011,,CH-000011,,family_id,<missing>,Family identifier is missing,Restore the synthetic family key,True
+KEY002,error,children_births,CH-000012,,CH-000012,,family_id,<missing>,Family identifier is missing,Restore the synthetic family key,True
+KEY002,error,children_births,CH-000013,,CH-000013,,family_id,<missing>,Family identifier is missing,Restore the synthetic family key,True
+KEY003,error,parental_mh_events,PMH-000001,,,,event_id,PMH-000001,Duplicate primary key PMH-000001,Resolve duplicate event keys,True
+KEY003,error,parental_mh_events,PMH-000001,,,,event_id,PMH-000001,Duplicate primary key PMH-000001,Resolve duplicate event keys,True
+KEY003,error,parental_mh_events,PMH-000002,,,,event_id,PMH-000002,Duplicate primary key PMH-000002,Resolve duplicate event keys,True
+KEY003,error,parental_mh_events,PMH-000002,,,,event_id,PMH-000002,Duplicate primary key PMH-000002,Resolve duplicate event keys,True
+KEY003,error,parental_mh_events,PMH-000003,,,,event_id,PMH-000003,Duplicate primary key PMH-000003,Resolve duplicate event keys,True
+KEY003,error,parental_mh_events,PMH-000003,,,,event_id,PMH-000003,Duplicate primary key PMH-000003,Resolve duplicate event keys,True
+KEY004,error,education_assessments,EDU-000001,,,,assessment_id,EDU-000001,Duplicate primary key EDU-000001,Resolve duplicate assessment keys,True
+KEY004,error,education_assessments,EDU-000001,,,,assessment_id,EDU-000001,Duplicate primary key EDU-000001,Resolve duplicate assessment keys,True
+KEY004,error,education_assessments,EDU-000002,,,,assessment_id,EDU-000002,Duplicate primary key EDU-000002,Resolve duplicate assessment keys,True
+KEY004,error,education_assessments,EDU-000002,,,,assessment_id,EDU-000002,Duplicate primary key EDU-000002,Resolve duplicate assessment keys,True
+KEY004,error,education_assessments,EDU-000003,,,,assessment_id,EDU-000003,Duplicate primary key EDU-000003,Resolve duplicate assessment keys,True
+KEY004,error,education_assessments,EDU-000003,,,,assessment_id,EDU-000003,Duplicate primary key EDU-000003,Resolve duplicate assessment keys,True
+OUT001,error,offspring_outcomes,OUT-000001,,CH-000001,,event_date_demo,2007-12-10,Outcome event occurs before birth,Correct event chronology,True
+OUT001,error,offspring_outcomes,OUT-000002,,CH-000001,,event_date_demo,2007-12-10,Outcome event occurs before birth,Correct event chronology,True
+OUT001,error,offspring_outcomes,OUT-000003,,CH-000002,,event_date_demo,2009-07-21,Outcome event occurs before birth,Correct event chronology,True
+OUT002,error,offspring_outcomes,OUT-000012,,CH-000006,,event_date_demo,<missing>,Observed flag and event date are inconsistent,Reconcile observed flag and date,True
+OUT002,error,offspring_outcomes,OUT-000026,,CH-000013,,event_date_demo,<missing>,Observed flag and event date are inconsistent,Reconcile observed flag and date,True
+OUT002,error,offspring_outcomes,OUT-000046,,CH-000023,,event_date_demo,<missing>,Observed flag and event date are inconsistent,Reconcile observed flag and date,True
+PAR001,error,parents,P-000001,FAM-000001,,P-000001,parent_role,guardian,Parent role is outside the controlled vocabulary,Use mother or father,True
+PAR001,error,parents,P-000002,FAM-000002,,P-000002,parent_role,guardian,Parent role is outside the controlled vocabulary,Use mother or father,True
+PAR001,error,parents,P-000003,FAM-000003,,P-000003,parent_role,guardian,Parent role is outside the controlled vocabulary,Use mother or father,True
+PAR002,error,parents,M-000007,FAM-000007,,M-000007,parent_role,mother,Family has duplicate parent-role records,Retain one parent per role,True
+PAR002,error,parents,M-000008,FAM-000008,,M-000008,parent_role,mother,Family has duplicate parent-role records,Retain one parent per role,True
+PAR002,error,parents,M-000009,FAM-000009,,M-000009,parent_role,mother,Family has duplicate parent-role records,Retain one parent per role,True
+PAR002,error,parents,P-000007,FAM-000007,,P-000007,parent_role,mother,Family has duplicate parent-role records,Retain one parent per role,True
+PAR002,error,parents,P-000008,FAM-000008,,P-000008,parent_role,mother,Family has duplicate parent-role records,Retain one parent per role,True
+PAR002,error,parents,P-000009,FAM-000009,,P-000009,parent_role,mother,Family has duplicate parent-role records,Retain one parent per role,True
+SIB001,error,children_births,CH-000017,FAM-000011,CH-000017,,birth_order,1,Duplicate birth order among singleton siblings,Restore sequential birth order,True
+SIB001,error,children_births,CH-000018,FAM-000011,CH-000018,,birth_order,1,Duplicate birth order among singleton siblings,Restore sequential birth order,True
+SIB001,error,children_births,CH-000021,FAM-000014,CH-000021,,birth_order,1,Duplicate birth order among singleton siblings,Restore sequential birth order,True
+SIB001,error,children_births,CH-000022,FAM-000014,CH-000022,,birth_order,1,Duplicate birth order among singleton siblings,Restore sequential birth order,True
+SIB001,error,children_births,CH-000024,FAM-000016,CH-000024,,birth_order,1,Duplicate birth order among singleton siblings,Restore sequential birth order,True
+SIB001,error,children_births,CH-000025,FAM-000016,CH-000025,,birth_order,1,Duplicate birth order among singleton siblings,Restore sequential birth order,True
+SIB003,error,children_births,CH-000021,FAM-000014,CH-000021,,"mother_id,father_id",M-990020|P-000014,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000022,FAM-000014,CH-000022,,"mother_id,father_id",M-990021|P-000014,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000032,FAM-000021,CH-000032,,"mother_id,father_id",M-000021|P-990031,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000033,FAM-000021,CH-000033,,"mother_id,father_id",M-000021|P-990032,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000040,FAM-000025,CH-000040,,"mother_id,father_id",M-000025|P-000025,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000041,FAM-000025,CH-000041,,"mother_id,father_id",M-000006|P-000025,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000042,FAM-000026,CH-000042,,"mother_id,father_id",M-000007|P-000026,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000043,FAM-000026,CH-000043,,"mother_id,father_id",M-000001|P-000026,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000050,FAM-000031,CH-000050,,"mother_id,father_id",M-000031|P-000031,Sibling parent links are inconsistent,Reconcile parent links,True
+SIB003,error,children_births,CH-000051,FAM-000031,CH-000051,,"mother_id,father_id",M-000031|M-000031,Sibling parent links are inconsistent,Reconcile parent links,True

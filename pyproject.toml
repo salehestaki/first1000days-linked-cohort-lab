@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "first1000days-linked-cohort-lab"
+version = "0.1.0"
+description = "Fully synthetic linked-cohort methods laboratory"
+requires-python = ">=3.11,<3.13"
+license = {text = "MIT"}
+authors = [{name = "Saleh Estaki Organi"}]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["src/first1000days_lab"]
+omit = ["src/first1000days_lab/visuals.py", "src/first1000days_lab/app_support.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["data", "dist", "reports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"pages/*.py" = ["E402"]
+"tests/*.py" = ["S101"]

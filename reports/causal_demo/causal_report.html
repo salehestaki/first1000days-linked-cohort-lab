@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Causal-Design Simulation Comparison</title><style>
+body{font-family:Arial,sans-serif;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#17252b;line-height:1.5}
+.warning{border:2px solid #7a4d00;background:#fff7e6;padding:1rem;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid #ccd6da;padding:.4rem;text-align:left}th{background:#eef3f5}
+footer{margin-top:3rem;border-top:1px solid #999;padding-top:1rem;font-size:.85rem}
+</style></head><body><h1>Causal-Design Simulation Comparison</h1><div class="warning">Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</div>
+<section><h2>Primary estimates</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>estimate</th>
+      <th>standard_error</th>
+      <th>ci_low</th>
+      <th>ci_high</th>
+      <th>n_children</th>
+      <th>n_families</th>
+      <th>discordant_family_count</th>
+      <th>exposure_variation</th>
+      <th>simulation_truth</th>
+      <th>absolute_error_from_truth</th>
+      <th>sample_fraction_of_naive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Naive cohort</td>
+      <td>-0.701084</td>
+      <td>0.038855</td>
+      <td>-0.777240</td>
+      <td>-0.624928</td>
+      <td>3049</td>
+      <td>1921</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.2</td>
+      <td>0.501084</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>Adjusted cohort</td>
+      <td>-0.419959</td>
+      <td>0.032999</td>
+      <td>-0.484637</td>
+      <td>-0.355281</td>
+      <td>3049</td>
+      <td>1921</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.2</td>
+      <td>0.219959</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>Sibling fixed effects</td>
+      <td>-0.175798</td>
+      <td>0.046733</td>
+      <td>-0.267394</td>
+      <td>-0.084202</td>
+      <td>1125</td>
+      <td>507</td>
+      <td>507.0</td>
+      <td>0.241919</td>
+      <td>-0.2</td>
+      <td>0.024202</td>
+      <td>0.368973</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Secondary paternal comparison</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>estimate</th>
+      <th>standard_error</th>
+      <th>ci_low</th>
+      <th>ci_high</th>
+      <th>n_children</th>
+      <th>n_families</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Paternal secondary comparison</td>
+      <td>-0.543832</td>
+      <td>0.055338</td>
+      <td>-0.652294</td>
+      <td>-0.43537</td>
+      <td>3049</td>
+      <td>1921</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Interpretation</h2><p>This is a simulation demonstration, not causal proof. The designs use different identifying assumptions.</p></section><section><h2>Run metadata</h2><pre>{
+  &quot;analysis_configuration_hash&quot;: &quot;a988a08f3822d1a4d3e7a667921cd5d11cf31d3c7a44df109ec923d2cb48cc46&quot;,
+  &quot;creation_timestamp_utc&quot;: &quot;2026-07-15T18:23:39.286040+00:00&quot;,
+  &quot;input_file_hashes&quot;: {
+    &quot;children_births.csv&quot;: &quot;4089fad70439e6a8fe733664f9473c713ca547b012abd65be05e2d9132799f00&quot;,
+    &quot;education_assessments.csv&quot;: &quot;ed4e900eb92d4638e4f10773327b191cd223f6a7323e36348b644756d64bd18b&quot;,
+    &quot;families.csv&quot;: &quot;594687fb9938db614aab92d02ec0e1673f8e2e43b14cf7183c98aa214196ba0d&quot;,
+    &quot;offspring_outcomes.csv&quot;: &quot;fd322ebbde2521863579accb74eba3f98520af5f89b50c3329cf0b0f60494321&quot;,
+    &quot;parental_mh_events.csv&quot;: &quot;2d050a8280158bf6c32495f7fe08a9409b056c714c4bd983276dce21f0337794&quot;,
+    &quot;parents.csv&quot;: &quot;bf6f38f1f4511eafad7dc69bb70678e67e867d2cb5254bdc318df2e59e7fa169&quot;
+  },
+  &quot;number_of_children&quot;: 3322,
+  &quot;number_of_exposure_discordant_sibling_sets&quot;: 597,
+  &quot;number_of_families&quot;: 2000,
+  &quot;number_of_sibling_sets&quot;: 1104,
+  &quot;repository_version&quot;: &quot;0.1.0&quot;,
+  &quot;row_count&quot;: 3322,
+  &quot;rulebook_version&quot;: &quot;1.0.0&quot;,
+  &quot;seed&quot;: 20260715,
+  &quot;true_simulation_effect&quot;: -0.2
+}</pre></section>
+<footer>Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</footer></body></html>

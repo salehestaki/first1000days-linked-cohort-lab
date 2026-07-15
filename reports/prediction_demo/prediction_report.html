@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Synthetic Aggregate Precision-Risk Evaluation</title><style>
+body{font-family:Arial,sans-serif;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#17252b;line-height:1.5}
+.warning{border:2px solid #7a4d00;background:#fff7e6;padding:1rem;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid #ccd6da;padding:.4rem;text-align:left}th{background:#eef3f5}
+footer{margin-top:3rem;border-top:1px solid #999;padding-top:1rem;font-size:.85rem}
+</style></head><body><h1>Synthetic Aggregate Precision-Risk Evaluation</h1><div class="warning">Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</div>
+<section><h2>Boundary</h2><p><strong>Synthetic aggregate evaluation only — not an individual risk tool.</strong></p></section>
+<section><h2>Model metrics</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>n</th>
+      <th>prevalence</th>
+      <th>auroc</th>
+      <th>average_precision</th>
+      <th>brier_score</th>
+      <th>log_loss</th>
+      <th>calibration_intercept</th>
+      <th>calibration_slope</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>767</td>
+      <td>0.230769</td>
+      <td>0.720147</td>
+      <td>0.457992</td>
+      <td>0.212109</td>
+      <td>0.611985</td>
+      <td>-1.193768</td>
+      <td>1.089106</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>767</td>
+      <td>0.230769</td>
+      <td>0.711620</td>
+      <td>0.472763</td>
+      <td>0.155900</td>
+      <td>0.484726</td>
+      <td>0.026150</td>
+      <td>0.993994</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Calibration bins</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>bin</th>
+      <th>mean_predicted_probability</th>
+      <th>observed_fraction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>1</td>
+      <td>0.182093</td>
+      <td>0.064935</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>2</td>
+      <td>0.257587</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>3</td>
+      <td>0.311788</td>
+      <td>0.105263</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>4</td>
+      <td>0.368127</td>
+      <td>0.103896</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>5</td>
+      <td>0.425911</td>
+      <td>0.168831</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>6</td>
+      <td>0.485506</td>
+      <td>0.197368</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>7</td>
+      <td>0.544075</td>
+      <td>0.233766</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>8</td>
+      <td>0.598822</td>
+      <td>0.368421</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>9</td>
+      <td>0.662982</td>
+      <td>0.350649</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>10</td>
+      <td>0.764155</td>
+      <td>0.571429</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>1</td>
+      <td>0.088404</td>
+      <td>0.103896</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>2</td>
+      <td>0.113175</td>
+      <td>0.090909</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>3</td>
+      <td>0.131294</td>
+      <td>0.144737</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>4</td>
+      <td>0.145910</td>
+      <td>0.181818</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>5</td>
+      <td>0.161651</td>
+      <td>0.090909</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>6</td>
+      <td>0.182278</td>
+      <td>0.184211</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>7</td>
+      <td>0.213303</td>
+      <td>0.233766</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>8</td>
+      <td>0.266643</td>
+      <td>0.302632</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>9</td>
+      <td>0.362954</td>
+      <td>0.415584</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>10</td>
+      <td>0.589892</td>
+      <td>0.558442</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Subgroup audit</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>subgroup_variable</th>
+      <th>subgroup_value</th>
+      <th>n</th>
+      <th>positive_cases</th>
+      <th>auroc</th>
+      <th>average_precision</th>
+      <th>brier_score</th>
+      <th>reporting_status</th>
+      <th>interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>child_sex_recorded</td>
+      <td>female</td>
+      <td>397</td>
+      <td>90</td>
+      <td>0.726022</td>
+      <td>0.470768</td>
+      <td>0.225686</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>child_sex_recorded</td>
+      <td>male</td>
+      <td>362</td>
+      <td>87</td>
+      <td>0.721714</td>
+      <td>0.461809</td>
+      <td>0.199308</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>child_sex_recorded</td>
+      <td>other_or_not_recorded</td>
+      <td>8</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Insufficient synthetic sample for stable reporting</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>socioeconomic_group_demo</td>
+      <td>high_demo</td>
+      <td>143</td>
+      <td>17</td>
+      <td>0.616246</td>
+      <td>0.151915</td>
+      <td>0.124573</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>socioeconomic_group_demo</td>
+      <td>low_demo</td>
+      <td>226</td>
+      <td>92</td>
+      <td>0.678212</td>
+      <td>0.586077</td>
+      <td>0.273164</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>socioeconomic_group_demo</td>
+      <td>middle_demo</td>
+      <td>398</td>
+      <td>68</td>
+      <td>0.655258</td>
+      <td>0.253536</td>
+      <td>0.208892</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>area_context</td>
+      <td>metropolitan_demo</td>
+      <td>384</td>
+      <td>94</td>
+      <td>0.703412</td>
+      <td>0.487008</td>
+      <td>0.212298</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>area_context</td>
+      <td>regional_demo</td>
+      <td>249</td>
+      <td>56</td>
+      <td>0.727239</td>
+      <td>0.432486</td>
+      <td>0.236740</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>area_context</td>
+      <td>remote_demo</td>
+      <td>134</td>
+      <td>27</td>
+      <td>0.758740</td>
+      <td>0.585059</td>
+      <td>0.165798</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>region_code</td>
+      <td>REGION_A</td>
+      <td>384</td>
+      <td>94</td>
+      <td>0.703412</td>
+      <td>0.487008</td>
+      <td>0.212298</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>region_code</td>
+      <td>REGION_B</td>
+      <td>249</td>
+      <td>56</td>
+      <td>0.727239</td>
+      <td>0.432486</td>
+      <td>0.236740</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>region_code</td>
+      <td>REGION_C</td>
+      <td>134</td>
+      <td>27</td>
+      <td>0.758740</td>
+      <td>0.585059</td>
+      <td>0.165798</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>child_sex_recorded</td>
+      <td>female</td>
+      <td>397</td>
+      <td>90</td>
+      <td>0.716015</td>
+      <td>0.460970</td>
+      <td>0.153153</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>child_sex_recorded</td>
+      <td>male</td>
+      <td>362</td>
+      <td>87</td>
+      <td>0.710805</td>
+      <td>0.493583</td>
+      <td>0.161634</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>child_sex_recorded</td>
+      <td>other_or_not_recorded</td>
+      <td>8</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Insufficient synthetic sample for stable reporting</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>socioeconomic_group_demo</td>
+      <td>high_demo</td>
+      <td>143</td>
+      <td>17</td>
+      <td>0.538282</td>
+      <td>0.167175</td>
+      <td>0.105559</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>socioeconomic_group_demo</td>
+      <td>low_demo</td>
+      <td>226</td>
+      <td>92</td>
+      <td>0.692610</td>
+      <td>0.610324</td>
+      <td>0.220140</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>socioeconomic_group_demo</td>
+      <td>middle_demo</td>
+      <td>398</td>
+      <td>68</td>
+      <td>0.613503</td>
+      <td>0.280173</td>
+      <td>0.137509</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>area_context</td>
+      <td>metropolitan_demo</td>
+      <td>384</td>
+      <td>94</td>
+      <td>0.696460</td>
+      <td>0.506862</td>
+      <td>0.161642</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>area_context</td>
+      <td>regional_demo</td>
+      <td>249</td>
+      <td>56</td>
+      <td>0.728997</td>
+      <td>0.428719</td>
+      <td>0.157748</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>area_context</td>
+      <td>remote_demo</td>
+      <td>134</td>
+      <td>27</td>
+      <td>0.712357</td>
+      <td>0.509582</td>
+      <td>0.136010</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>region_code</td>
+      <td>REGION_A</td>
+      <td>384</td>
+      <td>94</td>
+      <td>0.696460</td>
+      <td>0.506862</td>
+      <td>0.161642</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>region_code</td>
+      <td>REGION_B</td>
+      <td>249</td>
+      <td>56</td>
+      <td>0.728997</td>
+      <td>0.428719</td>
+      <td>0.157748</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>region_code</td>
+      <td>REGION_C</td>
+      <td>134</td>
+      <td>27</td>
+      <td>0.712357</td>
+      <td>0.509582</td>
+      <td>0.136010</td>
+      <td>Reported</td>
+      <td>Subgroup performance audit in synthetic data; this is not evidence of fairness, equity or transportability.</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Permutation importance</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>feature</th>
+      <th>importance_mean</th>
+      <th>importance_std</th>
+      <th>interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>socioeconomic_quintile_demo</td>
+      <td>0.089894</td>
+      <td>0.008464</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>protective_context_score_demo</td>
+      <td>0.047480</td>
+      <td>0.003912</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>maternal_pregnancy_exposure_demo</td>
+      <td>0.013511</td>
+      <td>0.005595</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>paternal_pregnancy_window_exposure_demo</td>
+      <td>0.002608</td>
+      <td>0.000903</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>paternal_preconception_exposure_demo</td>
+      <td>0.002321</td>
+      <td>0.001562</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>region_code</td>
+      <td>0.002005</td>
+      <td>0.002641</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>area_context</td>
+      <td>0.002005</td>
+      <td>0.002641</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>child_sex_recorded</td>
+      <td>0.001519</td>
+      <td>0.001772</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>maternal_age_at_first_child_demo</td>
+      <td>0.001082</td>
+      <td>0.001211</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>maternal_postnatal_0_2_exposure_demo</td>
+      <td>0.000677</td>
+      <td>0.000223</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>birth_order</td>
+      <td>0.000214</td>
+      <td>0.000282</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>paternal_age_at_first_child_demo</td>
+      <td>0.000013</td>
+      <td>0.000016</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>paternal_postnatal_0_2_exposure_demo</td>
+      <td>-0.000342</td>
+      <td>0.000403</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>maternal_preconception_exposure_demo</td>
+      <td>-0.000530</td>
+      <td>0.000160</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>birthweight_g_demo</td>
+      <td>-0.000709</td>
+      <td>0.000752</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>gestational_age_weeks_demo</td>
+      <td>-0.001762</td>
+      <td>0.002022</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>early_support_contact_demo</td>
+      <td>-0.001915</td>
+      <td>0.000918</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>socioeconomic_quintile_demo</td>
+      <td>0.111745</td>
+      <td>0.010383</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>protective_context_score_demo</td>
+      <td>0.055260</td>
+      <td>0.004895</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>area_context</td>
+      <td>0.012436</td>
+      <td>0.005114</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>birthweight_g_demo</td>
+      <td>0.009735</td>
+      <td>0.002877</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>paternal_age_at_first_child_demo</td>
+      <td>0.009276</td>
+      <td>0.004977</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>paternal_pregnancy_window_exposure_demo</td>
+      <td>0.003924</td>
+      <td>0.000419</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>maternal_pregnancy_exposure_demo</td>
+      <td>0.002357</td>
+      <td>0.004892</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>child_sex_recorded</td>
+      <td>0.001108</td>
+      <td>0.008354</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>maternal_postnatal_0_2_exposure_demo</td>
+      <td>0.000622</td>
+      <td>0.000903</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>paternal_postnatal_0_2_exposure_demo</td>
+      <td>0.000595</td>
+      <td>0.000674</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>paternal_preconception_exposure_demo</td>
+      <td>0.000587</td>
+      <td>0.000778</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>maternal_preconception_exposure_demo</td>
+      <td>0.000096</td>
+      <td>0.000095</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>region_code</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>maternal_age_at_first_child_demo</td>
+      <td>-0.000201</td>
+      <td>0.002972</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>early_support_contact_demo</td>
+      <td>-0.000664</td>
+      <td>0.000340</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>gestational_age_weeks_demo</td>
+      <td>-0.001037</td>
+      <td>0.000695</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>birth_order</td>
+      <td>-0.002557</td>
+      <td>0.002786</td>
+      <td>Predictive importance is not causal importance.</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Thresholds</h2><p>Thresholds are arbitrary demonstrations and are not intervention thresholds.</p><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>threshold</th>
+      <th>sensitivity</th>
+      <th>specificity</th>
+      <th>positive_predictive_value</th>
+      <th>negative_predictive_value</th>
+      <th>true_positive</th>
+      <th>false_positive</th>
+      <th>true_negative</th>
+      <th>false_negative</th>
+      <th>warning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>0.20</td>
+      <td>0.977401</td>
+      <td>0.077966</td>
+      <td>0.241283</td>
+      <td>0.920000</td>
+      <td>173</td>
+      <td>544</td>
+      <td>46</td>
+      <td>4</td>
+      <td>Thresholds are arbitrary demonstrations and are not intervention thresholds.</td>
+    </tr>
+    <tr>
+      <td>Regularised logistic regression</td>
+      <td>0.35</td>
+      <td>0.853107</td>
+      <td>0.367797</td>
+      <td>0.288168</td>
+      <td>0.893004</td>
+      <td>151</td>
+      <td>373</td>
+      <td>217</td>
+      <td>26</td>
+      <td>Thresholds are arbitrary demonstrations and are not intervention thresholds.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>0.20</td>
+      <td>0.638418</td>
+      <td>0.688136</td>
+      <td>0.380471</td>
+      <td>0.863830</td>
+      <td>113</td>
+      <td>184</td>
+      <td>406</td>
+      <td>64</td>
+      <td>Thresholds are arbitrary demonstrations and are not intervention thresholds.</td>
+    </tr>
+    <tr>
+      <td>HistGradientBoosting benchmark</td>
+      <td>0.35</td>
+      <td>0.361582</td>
+      <td>0.898305</td>
+      <td>0.516129</td>
+      <td>0.824261</td>
+      <td>64</td>
+      <td>60</td>
+      <td>530</td>
+      <td>113</td>
+      <td>Thresholds are arbitrary demonstrations and are not intervention thresholds.</td>
+    </tr>
+  </tbody>
+</table></section><section><h2>Run metadata</h2><pre>{
+  &quot;analysis_configuration_hash&quot;: &quot;a988a08f3822d1a4d3e7a667921cd5d11cf31d3c7a44df109ec923d2cb48cc46&quot;,
+  &quot;best_parameters&quot;: {
+    &quot;HistGradientBoosting benchmark&quot;: {
+      &quot;model__learning_rate&quot;: 0.08,
+      &quot;model__max_leaf_nodes&quot;: 15
+    },
+    &quot;Regularised logistic regression&quot;: {
+      &quot;model__C&quot;: 0.5
+    }
+  },
+  &quot;creation_timestamp_utc&quot;: &quot;2026-07-15T18:23:44.886738+00:00&quot;,
+  &quot;cross_validation&quot;: &quot;StratifiedGroupKFold&quot;,
+  &quot;development_child_count&quot;: 2282,
+  &quot;development_family_count&quot;: 1440,
+  &quot;family_overlap_count&quot;: 0,
+  &quot;feature_list&quot;: [
+    &quot;maternal_preconception_exposure_demo&quot;,
+    &quot;maternal_pregnancy_exposure_demo&quot;,
+    &quot;maternal_postnatal_0_2_exposure_demo&quot;,
+    &quot;paternal_preconception_exposure_demo&quot;,
+    &quot;paternal_pregnancy_window_exposure_demo&quot;,
+    &quot;paternal_postnatal_0_2_exposure_demo&quot;,
+    &quot;socioeconomic_quintile_demo&quot;,
+    &quot;maternal_age_at_first_child_demo&quot;,
+    &quot;paternal_age_at_first_child_demo&quot;,
+    &quot;gestational_age_weeks_demo&quot;,
+    &quot;birthweight_g_demo&quot;,
+    &quot;birth_order&quot;,
+    &quot;protective_context_score_demo&quot;,
+    &quot;early_support_contact_demo&quot;,
+    &quot;area_context&quot;,
+    &quot;region_code&quot;,
+    &quot;child_sex_recorded&quot;
+  ],
+  &quot;feature_time_boundary&quot;: &quot;Conceptually available by age two&quot;,
+  &quot;input_file_hashes&quot;: {
+    &quot;children_births.csv&quot;: &quot;4089fad70439e6a8fe733664f9473c713ca547b012abd65be05e2d9132799f00&quot;,
+    &quot;education_assessments.csv&quot;: &quot;ed4e900eb92d4638e4f10773327b191cd223f6a7323e36348b644756d64bd18b&quot;,
+    &quot;families.csv&quot;: &quot;594687fb9938db614aab92d02ec0e1673f8e2e43b14cf7183c98aa214196ba0d&quot;,
+    &quot;offspring_outcomes.csv&quot;: &quot;fd322ebbde2521863579accb74eba3f98520af5f89b50c3329cf0b0f60494321&quot;,
+    &quot;parental_mh_events.csv&quot;: &quot;2d050a8280158bf6c32495f7fe08a9409b056c714c4bd983276dce21f0337794&quot;,
+    &quot;parents.csv&quot;: &quot;bf6f38f1f4511eafad7dc69bb70678e67e867d2cb5254bdc318df2e59e7fa169&quot;
+  },
+  &quot;number_of_children&quot;: 3322,
+  &quot;number_of_exposure_discordant_sibling_sets&quot;: 597,
+  &quot;number_of_families&quot;: 2000,
+  &quot;number_of_sibling_sets&quot;: 1104,
+  &quot;repository_version&quot;: &quot;0.1.0&quot;,
+  &quot;row_count&quot;: 3322,
+  &quot;rulebook_version&quot;: &quot;1.0.0&quot;,
+  &quot;seed&quot;: 20260715,
+  &quot;target&quot;: &quot;adverse_educational_trajectory_demo&quot;,
+  &quot;test_child_count&quot;: 767,
+  &quot;test_family_count&quot;: 481
+}</pre></section>
+<footer>Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</footer></body></html>

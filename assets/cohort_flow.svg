@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Synthetic cohort flow</title><desc id="desc">Cohort stages from generated children to prediction and sibling analyses.</desc>
+<style>.b{fill:#f3f6f7;stroke:#315f72;stroke-width:2}.t{font:18px Arial,sans-serif;fill:#17252b;text-anchor:middle}.a{stroke:#315f72;stroke-width:2.5;marker-end:url(#m)}</style><defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#315f72"/></marker></defs>
+<rect x="400" y="25" width="400" height="55" rx="10" class="b"/><text x="600" y="59" class="t">All generated children</text>
+<line x1="600" y1="80" x2="600" y2="108" class="a"/><rect x="400" y="112" width="400" height="55" rx="10" class="b"/><text x="600" y="146" class="t">Valid parent and family links</text>
+<line x1="600" y1="167" x2="600" y2="195" class="a"/><rect x="400" y="199" width="400" height="55" rx="10" class="b"/><text x="600" y="233" class="t">Computable exposure windows</text>
+<line x1="600" y1="254" x2="600" y2="282" class="a"/><rect x="400" y="286" width="400" height="55" rx="10" class="b"/><text x="600" y="320" class="t">Observed age-12 literacy outcome</text>
+<line x1="600" y1="341" x2="600" y2="369" class="a"/><rect x="400" y="373" width="400" height="55" rx="10" class="b"/><text x="600" y="407" class="t">Conventional cohort analysis</text>
+<line x1="600" y1="428" x2="365" y2="475" class="a"/><line x1="600" y1="428" x2="835" y2="475" class="a"/>
+<rect x="130" y="480" width="470" height="65" rx="10" class="b"/><text x="365" y="508" class="t">Multi-child → exposure-discordant families</text><text x="365" y="533" class="t">→ sibling fixed-effects analysis</text>
+<rect x="650" y="480" width="370" height="65" rx="10" class="b"/><text x="835" y="508" class="t">Observed target</text><text x="835" y="533" class="t">→ prediction evaluation</text>
+<text x="600" y="635" class="t">Exact counts are written to data/synthetic/derived/cohort_flow.csv</text>
+</svg>

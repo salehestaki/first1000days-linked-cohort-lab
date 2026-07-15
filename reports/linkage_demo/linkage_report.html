@@ -1,0 +1,1698 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Synthetic Linkage and Longitudinal Integrity Audit</title><style>
+body{font-family:Arial,sans-serif;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#17252b;line-height:1.5}
+.warning{border:2px solid #7a4d00;background:#fff7e6;padding:1rem;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid #ccd6da;padding:.4rem;text-align:left}th{background:#eef3f5}
+footer{margin-top:3rem;border-top:1px solid #999;padding-top:1rem;font-size:.85rem}
+</style></head><body><h1>Synthetic Linkage and Longitudinal Integrity Audit</h1><div class="warning">Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</div>
+<section><h2>Issue summary</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>severity</th>
+      <th>rule_id</th>
+      <th>table_name</th>
+      <th>issue_count</th>
+      <th>blocking_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>error</td>
+      <td>CH001</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CH002</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CH003</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CH004</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CHR001</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>CHR002</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU001</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU002</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU003</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU004</td>
+      <td>education_assessments</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EDU005</td>
+      <td>education_assessments</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>EVT001</td>
+      <td>parental_mh_events</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>FAM001</td>
+      <td>families</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>FAM002</td>
+      <td>families</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY001</td>
+      <td>children_births</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY002</td>
+      <td>children_births</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY003</td>
+      <td>parental_mh_events</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>KEY004</td>
+      <td>education_assessments</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>OUT001</td>
+      <td>offspring_outcomes</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>OUT002</td>
+      <td>offspring_outcomes</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>PAR001</td>
+      <td>parents</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>PAR002</td>
+      <td>parents</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>SIB001</td>
+      <td>children_births</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>SIB003</td>
+      <td>children_births</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Detected issues</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rule_id</th>
+      <th>severity</th>
+      <th>table_name</th>
+      <th>record_id</th>
+      <th>family_id</th>
+      <th>child_id</th>
+      <th>parent_id</th>
+      <th>field_name</th>
+      <th>observed_value</th>
+      <th>issue_message</th>
+      <th>suggested_action</th>
+      <th>blocks_analysis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CH001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000021</td>
+      <td>FAM-000014</td>
+      <td>CH-000021</td>
+      <td>M-990020</td>
+      <td>mother_id</td>
+      <td>M-990020</td>
+      <td>Mother link does not resolve</td>
+      <td>Link to an existing mother record</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000022</td>
+      <td>FAM-000014</td>
+      <td>CH-000022</td>
+      <td>M-990021</td>
+      <td>mother_id</td>
+      <td>M-990021</td>
+      <td>Mother link does not resolve</td>
+      <td>Link to an existing mother record</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000023</td>
+      <td>FAM-000015</td>
+      <td>CH-000023</td>
+      <td>M-990022</td>
+      <td>mother_id</td>
+      <td>M-990022</td>
+      <td>Mother link does not resolve</td>
+      <td>Link to an existing mother record</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000031</td>
+      <td>FAM-000020</td>
+      <td>CH-000031</td>
+      <td>P-990030</td>
+      <td>father_id</td>
+      <td>P-990030</td>
+      <td>Father link does not resolve</td>
+      <td>Link to an existing father record</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000032</td>
+      <td>FAM-000021</td>
+      <td>CH-000032</td>
+      <td>P-990031</td>
+      <td>father_id</td>
+      <td>P-990031</td>
+      <td>Father link does not resolve</td>
+      <td>Link to an existing father record</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000033</td>
+      <td>FAM-000021</td>
+      <td>CH-000033</td>
+      <td>P-990032</td>
+      <td>father_id</td>
+      <td>P-990032</td>
+      <td>Father link does not resolve</td>
+      <td>Link to an existing father record</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000041</td>
+      <td>FAM-000025</td>
+      <td>CH-000041</td>
+      <td>M-000006</td>
+      <td>mother_id</td>
+      <td>M-000006</td>
+      <td>Linked mother belongs to another family</td>
+      <td>Correct the family-parent relation</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000042</td>
+      <td>FAM-000026</td>
+      <td>CH-000042</td>
+      <td>M-000007</td>
+      <td>mother_id</td>
+      <td>M-000007</td>
+      <td>Linked mother belongs to another family</td>
+      <td>Correct the family-parent relation</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000043</td>
+      <td>FAM-000026</td>
+      <td>CH-000043</td>
+      <td>M-000001</td>
+      <td>mother_id</td>
+      <td>M-000001</td>
+      <td>Linked mother belongs to another family</td>
+      <td>Correct the family-parent relation</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH004</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000051</td>
+      <td>FAM-000031</td>
+      <td>CH-000051</td>
+      <td>M-000031</td>
+      <td>mother_id,father_id</td>
+      <td>M-000031</td>
+      <td>Mother and father identifiers are identical</td>
+      <td>Use distinct role-specific parent keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH004</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000052</td>
+      <td>FAM-000032</td>
+      <td>CH-000052</td>
+      <td>M-000032</td>
+      <td>mother_id,father_id</td>
+      <td>M-000032</td>
+      <td>Mother and father identifiers are identical</td>
+      <td>Use distinct role-specific parent keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CH004</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000053</td>
+      <td>FAM-000032</td>
+      <td>CH-000053</td>
+      <td>M-000032</td>
+      <td>mother_id,father_id</td>
+      <td>M-000032</td>
+      <td>Mother and father identifiers are identical</td>
+      <td>Use distinct role-specific parent keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CHR001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000061</td>
+      <td>FAM-000038</td>
+      <td>CH-000061</td>
+      <td>&lt;NA&gt;</td>
+      <td>conception_date_demo</td>
+      <td>2002-08-03</td>
+      <td>Conception occurs after birth</td>
+      <td>Correct chronology</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CHR001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000062</td>
+      <td>FAM-000038</td>
+      <td>CH-000062</td>
+      <td>&lt;NA&gt;</td>
+      <td>conception_date_demo</td>
+      <td>2004-04-16</td>
+      <td>Conception occurs after birth</td>
+      <td>Correct chronology</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CHR001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000063</td>
+      <td>FAM-000039</td>
+      <td>CH-000063</td>
+      <td>&lt;NA&gt;</td>
+      <td>conception_date_demo</td>
+      <td>2006-04-16</td>
+      <td>Conception occurs after birth</td>
+      <td>Correct chronology</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CHR002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000061</td>
+      <td>FAM-000038</td>
+      <td>CH-000061</td>
+      <td>&lt;NA&gt;</td>
+      <td>gestational_age_weeks_demo</td>
+      <td>37</td>
+      <td>Gestational age does not match conception and birth dates</td>
+      <td>Reconcile gestation and dates</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CHR002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000062</td>
+      <td>FAM-000038</td>
+      <td>CH-000062</td>
+      <td>&lt;NA&gt;</td>
+      <td>gestational_age_weeks_demo</td>
+      <td>41</td>
+      <td>Gestational age does not match conception and birth dates</td>
+      <td>Reconcile gestation and dates</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>CHR002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000063</td>
+      <td>FAM-000039</td>
+      <td>CH-000063</td>
+      <td>&lt;NA&gt;</td>
+      <td>gestational_age_weeks_demo</td>
+      <td>40</td>
+      <td>Gestational age does not match conception and birth dates</td>
+      <td>Reconcile gestation and dates</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU001</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000011</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_age_years</td>
+      <td>9</td>
+      <td>Assessment age is invalid</td>
+      <td>Use age 8, 10, 12, or 14</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU001</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000012</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_age_years</td>
+      <td>9</td>
+      <td>Assessment age is invalid</td>
+      <td>Use age 8, 10, 12, or 14</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU001</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000013</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_age_years</td>
+      <td>9</td>
+      <td>Assessment age is invalid</td>
+      <td>Use age 8, 10, 12, or 14</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU002</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000023</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>&lt;missing&gt;</td>
+      <td>Observed assessment has no score</td>
+      <td>Populate score or mark missing</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU002</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000024</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>&lt;missing&gt;</td>
+      <td>Observed assessment has no score</td>
+      <td>Populate score or mark missing</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU002</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000025</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000004</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>&lt;missing&gt;</td>
+      <td>Observed assessment has no score</td>
+      <td>Populate score or mark missing</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU003</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000067</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000009</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>0.25</td>
+      <td>Missing assessment contains a score</td>
+      <td>Clear score or mark observed</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU003</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000070</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000009</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>0.25</td>
+      <td>Missing assessment contains a score</td>
+      <td>Clear score or mark observed</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU003</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000071</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000009</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>0.25</td>
+      <td>Missing assessment contains a score</td>
+      <td>Clear score or mark observed</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000031</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000004</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>8.0</td>
+      <td>Score lies outside configured synthetic range</td>
+      <td>Review standardised score</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000032</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000004</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>8.0</td>
+      <td>Score lies outside configured synthetic range</td>
+      <td>Review standardised score</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000033</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000005</td>
+      <td>&lt;NA&gt;</td>
+      <td>standardised_score_demo</td>
+      <td>8.0</td>
+      <td>Score lies outside configured synthetic range</td>
+      <td>Review standardised score</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000001|8|literacy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000001|8|literacy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000001|8|numeracy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000001|8|numeracy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000001|10|literacy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000001|10|literacy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000011</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000002|9|literacy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EDU005</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000013</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id,assessment_age_years,assessment_domain</td>
+      <td>CH-000002|9|literacy_demo</td>
+      <td>Duplicate child-age-domain assessment</td>
+      <td>Deduplicate repeated assessment</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EVT001</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000011</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>M-000018</td>
+      <td>event_date_demo</td>
+      <td>not-a-date</td>
+      <td>Event date is not parseable</td>
+      <td>Provide a valid synthetic date</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EVT001</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000012</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>M-000020</td>
+      <td>event_date_demo</td>
+      <td>not-a-date</td>
+      <td>Event date is not parseable</td>
+      <td>Provide a valid synthetic date</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>EVT001</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000013</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>M-000020</td>
+      <td>event_date_demo</td>
+      <td>not-a-date</td>
+      <td>Event date is not parseable</td>
+      <td>Provide a valid synthetic date</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>FAM001</td>
+      <td>error</td>
+      <td>families</td>
+      <td>FAM-000001</td>
+      <td>FAM-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>region_code</td>
+      <td>REGION_INVALID</td>
+      <td>Invalid region category</td>
+      <td>Use REGION_A, REGION_B, or REGION_C</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>FAM001</td>
+      <td>error</td>
+      <td>families</td>
+      <td>FAM-000002</td>
+      <td>FAM-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>region_code</td>
+      <td>REGION_INVALID</td>
+      <td>Invalid region category</td>
+      <td>Use REGION_A, REGION_B, or REGION_C</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>FAM001</td>
+      <td>error</td>
+      <td>families</td>
+      <td>FAM-000003</td>
+      <td>FAM-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>region_code</td>
+      <td>REGION_INVALID</td>
+      <td>Invalid region category</td>
+      <td>Use REGION_A, REGION_B, or REGION_C</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>FAM002</td>
+      <td>error</td>
+      <td>families</td>
+      <td>FAM-000004</td>
+      <td>FAM-000004</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>socioeconomic_quintile_demo</td>
+      <td>9</td>
+      <td>Socioeconomic quintile must be 1-5</td>
+      <td>Use an integer from 1 to 5</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>FAM002</td>
+      <td>error</td>
+      <td>families</td>
+      <td>FAM-000005</td>
+      <td>FAM-000005</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>socioeconomic_quintile_demo</td>
+      <td>9</td>
+      <td>Socioeconomic quintile must be 1-5</td>
+      <td>Use an integer from 1 to 5</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>FAM002</td>
+      <td>error</td>
+      <td>families</td>
+      <td>FAM-000006</td>
+      <td>FAM-000006</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>socioeconomic_quintile_demo</td>
+      <td>9</td>
+      <td>Socioeconomic quintile must be 1-5</td>
+      <td>Use an integer from 1 to 5</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id</td>
+      <td>CH-000001</td>
+      <td>Duplicate primary key CH-000001</td>
+      <td>Resolve duplicate primary keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id</td>
+      <td>CH-000001</td>
+      <td>Duplicate primary key CH-000001</td>
+      <td>Resolve duplicate primary keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id</td>
+      <td>CH-000002</td>
+      <td>Duplicate primary key CH-000002</td>
+      <td>Resolve duplicate primary keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id</td>
+      <td>CH-000002</td>
+      <td>Duplicate primary key CH-000002</td>
+      <td>Resolve duplicate primary keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id</td>
+      <td>CH-000003</td>
+      <td>Duplicate primary key CH-000003</td>
+      <td>Resolve duplicate primary keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>child_id</td>
+      <td>CH-000003</td>
+      <td>Duplicate primary key CH-000003</td>
+      <td>Resolve duplicate primary keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000011</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000011</td>
+      <td>&lt;NA&gt;</td>
+      <td>family_id</td>
+      <td>&lt;missing&gt;</td>
+      <td>Family identifier is missing</td>
+      <td>Restore the synthetic family key</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000012</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000012</td>
+      <td>&lt;NA&gt;</td>
+      <td>family_id</td>
+      <td>&lt;missing&gt;</td>
+      <td>Family identifier is missing</td>
+      <td>Restore the synthetic family key</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY002</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000013</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000013</td>
+      <td>&lt;NA&gt;</td>
+      <td>family_id</td>
+      <td>&lt;missing&gt;</td>
+      <td>Family identifier is missing</td>
+      <td>Restore the synthetic family key</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY003</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_id</td>
+      <td>PMH-000001</td>
+      <td>Duplicate primary key PMH-000001</td>
+      <td>Resolve duplicate event keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY003</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_id</td>
+      <td>PMH-000001</td>
+      <td>Duplicate primary key PMH-000001</td>
+      <td>Resolve duplicate event keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY003</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_id</td>
+      <td>PMH-000002</td>
+      <td>Duplicate primary key PMH-000002</td>
+      <td>Resolve duplicate event keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY003</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_id</td>
+      <td>PMH-000002</td>
+      <td>Duplicate primary key PMH-000002</td>
+      <td>Resolve duplicate event keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY003</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_id</td>
+      <td>PMH-000003</td>
+      <td>Duplicate primary key PMH-000003</td>
+      <td>Resolve duplicate event keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY003</td>
+      <td>error</td>
+      <td>parental_mh_events</td>
+      <td>PMH-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_id</td>
+      <td>PMH-000003</td>
+      <td>Duplicate primary key PMH-000003</td>
+      <td>Resolve duplicate event keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_id</td>
+      <td>EDU-000001</td>
+      <td>Duplicate primary key EDU-000001</td>
+      <td>Resolve duplicate assessment keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_id</td>
+      <td>EDU-000001</td>
+      <td>Duplicate primary key EDU-000001</td>
+      <td>Resolve duplicate assessment keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_id</td>
+      <td>EDU-000002</td>
+      <td>Duplicate primary key EDU-000002</td>
+      <td>Resolve duplicate assessment keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_id</td>
+      <td>EDU-000002</td>
+      <td>Duplicate primary key EDU-000002</td>
+      <td>Resolve duplicate assessment keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_id</td>
+      <td>EDU-000003</td>
+      <td>Duplicate primary key EDU-000003</td>
+      <td>Resolve duplicate assessment keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>KEY004</td>
+      <td>error</td>
+      <td>education_assessments</td>
+      <td>EDU-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>assessment_id</td>
+      <td>EDU-000003</td>
+      <td>Duplicate primary key EDU-000003</td>
+      <td>Resolve duplicate assessment keys</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>OUT001</td>
+      <td>error</td>
+      <td>offspring_outcomes</td>
+      <td>OUT-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_date_demo</td>
+      <td>2007-12-10</td>
+      <td>Outcome event occurs before birth</td>
+      <td>Correct event chronology</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>OUT001</td>
+      <td>error</td>
+      <td>offspring_outcomes</td>
+      <td>OUT-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_date_demo</td>
+      <td>2007-12-10</td>
+      <td>Outcome event occurs before birth</td>
+      <td>Correct event chronology</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>OUT001</td>
+      <td>error</td>
+      <td>offspring_outcomes</td>
+      <td>OUT-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_date_demo</td>
+      <td>2009-07-21</td>
+      <td>Outcome event occurs before birth</td>
+      <td>Correct event chronology</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>OUT002</td>
+      <td>error</td>
+      <td>offspring_outcomes</td>
+      <td>OUT-000012</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000006</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_date_demo</td>
+      <td>&lt;missing&gt;</td>
+      <td>Observed flag and event date are inconsistent</td>
+      <td>Reconcile observed flag and date</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>OUT002</td>
+      <td>error</td>
+      <td>offspring_outcomes</td>
+      <td>OUT-000026</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000013</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_date_demo</td>
+      <td>&lt;missing&gt;</td>
+      <td>Observed flag and event date are inconsistent</td>
+      <td>Reconcile observed flag and date</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>OUT002</td>
+      <td>error</td>
+      <td>offspring_outcomes</td>
+      <td>OUT-000046</td>
+      <td>&lt;NA&gt;</td>
+      <td>CH-000023</td>
+      <td>&lt;NA&gt;</td>
+      <td>event_date_demo</td>
+      <td>&lt;missing&gt;</td>
+      <td>Observed flag and event date are inconsistent</td>
+      <td>Reconcile observed flag and date</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR001</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>P-000001</td>
+      <td>FAM-000001</td>
+      <td>&lt;NA&gt;</td>
+      <td>P-000001</td>
+      <td>parent_role</td>
+      <td>guardian</td>
+      <td>Parent role is outside the controlled vocabulary</td>
+      <td>Use mother or father</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR001</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>P-000002</td>
+      <td>FAM-000002</td>
+      <td>&lt;NA&gt;</td>
+      <td>P-000002</td>
+      <td>parent_role</td>
+      <td>guardian</td>
+      <td>Parent role is outside the controlled vocabulary</td>
+      <td>Use mother or father</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR001</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>P-000003</td>
+      <td>FAM-000003</td>
+      <td>&lt;NA&gt;</td>
+      <td>P-000003</td>
+      <td>parent_role</td>
+      <td>guardian</td>
+      <td>Parent role is outside the controlled vocabulary</td>
+      <td>Use mother or father</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR002</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>M-000007</td>
+      <td>FAM-000007</td>
+      <td>&lt;NA&gt;</td>
+      <td>M-000007</td>
+      <td>parent_role</td>
+      <td>mother</td>
+      <td>Family has duplicate parent-role records</td>
+      <td>Retain one parent per role</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR002</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>M-000008</td>
+      <td>FAM-000008</td>
+      <td>&lt;NA&gt;</td>
+      <td>M-000008</td>
+      <td>parent_role</td>
+      <td>mother</td>
+      <td>Family has duplicate parent-role records</td>
+      <td>Retain one parent per role</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR002</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>M-000009</td>
+      <td>FAM-000009</td>
+      <td>&lt;NA&gt;</td>
+      <td>M-000009</td>
+      <td>parent_role</td>
+      <td>mother</td>
+      <td>Family has duplicate parent-role records</td>
+      <td>Retain one parent per role</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR002</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>P-000007</td>
+      <td>FAM-000007</td>
+      <td>&lt;NA&gt;</td>
+      <td>P-000007</td>
+      <td>parent_role</td>
+      <td>mother</td>
+      <td>Family has duplicate parent-role records</td>
+      <td>Retain one parent per role</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR002</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>P-000008</td>
+      <td>FAM-000008</td>
+      <td>&lt;NA&gt;</td>
+      <td>P-000008</td>
+      <td>parent_role</td>
+      <td>mother</td>
+      <td>Family has duplicate parent-role records</td>
+      <td>Retain one parent per role</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>PAR002</td>
+      <td>error</td>
+      <td>parents</td>
+      <td>P-000009</td>
+      <td>FAM-000009</td>
+      <td>&lt;NA&gt;</td>
+      <td>P-000009</td>
+      <td>parent_role</td>
+      <td>mother</td>
+      <td>Family has duplicate parent-role records</td>
+      <td>Retain one parent per role</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000017</td>
+      <td>FAM-000011</td>
+      <td>CH-000017</td>
+      <td>&lt;NA&gt;</td>
+      <td>birth_order</td>
+      <td>1</td>
+      <td>Duplicate birth order among singleton siblings</td>
+      <td>Restore sequential birth order</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000018</td>
+      <td>FAM-000011</td>
+      <td>CH-000018</td>
+      <td>&lt;NA&gt;</td>
+      <td>birth_order</td>
+      <td>1</td>
+      <td>Duplicate birth order among singleton siblings</td>
+      <td>Restore sequential birth order</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000021</td>
+      <td>FAM-000014</td>
+      <td>CH-000021</td>
+      <td>&lt;NA&gt;</td>
+      <td>birth_order</td>
+      <td>1</td>
+      <td>Duplicate birth order among singleton siblings</td>
+      <td>Restore sequential birth order</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000022</td>
+      <td>FAM-000014</td>
+      <td>CH-000022</td>
+      <td>&lt;NA&gt;</td>
+      <td>birth_order</td>
+      <td>1</td>
+      <td>Duplicate birth order among singleton siblings</td>
+      <td>Restore sequential birth order</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000024</td>
+      <td>FAM-000016</td>
+      <td>CH-000024</td>
+      <td>&lt;NA&gt;</td>
+      <td>birth_order</td>
+      <td>1</td>
+      <td>Duplicate birth order among singleton siblings</td>
+      <td>Restore sequential birth order</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB001</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000025</td>
+      <td>FAM-000016</td>
+      <td>CH-000025</td>
+      <td>&lt;NA&gt;</td>
+      <td>birth_order</td>
+      <td>1</td>
+      <td>Duplicate birth order among singleton siblings</td>
+      <td>Restore sequential birth order</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000021</td>
+      <td>FAM-000014</td>
+      <td>CH-000021</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-990020|P-000014</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000022</td>
+      <td>FAM-000014</td>
+      <td>CH-000022</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-990021|P-000014</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000032</td>
+      <td>FAM-000021</td>
+      <td>CH-000032</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000021|P-990031</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000033</td>
+      <td>FAM-000021</td>
+      <td>CH-000033</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000021|P-990032</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000040</td>
+      <td>FAM-000025</td>
+      <td>CH-000040</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000025|P-000025</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000041</td>
+      <td>FAM-000025</td>
+      <td>CH-000041</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000006|P-000025</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000042</td>
+      <td>FAM-000026</td>
+      <td>CH-000042</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000007|P-000026</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000043</td>
+      <td>FAM-000026</td>
+      <td>CH-000043</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000001|P-000026</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000050</td>
+      <td>FAM-000031</td>
+      <td>CH-000050</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000031|P-000031</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>SIB003</td>
+      <td>error</td>
+      <td>children_births</td>
+      <td>CH-000051</td>
+      <td>FAM-000031</td>
+      <td>CH-000051</td>
+      <td>&lt;NA&gt;</td>
+      <td>mother_id,father_id</td>
+      <td>M-000031|M-000031</td>
+      <td>Sibling parent links are inconsistent</td>
+      <td>Reconcile parent links</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table></section>
+<section><h2>Cohort-flow impact</h2><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>step</th>
+      <th>cohort_stage</th>
+      <th>remaining_n</th>
+      <th>excluded_n</th>
+      <th>percentage_retained</th>
+      <th>exclusion_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>All generated children</td>
+      <td>3322</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Valid parent and family links</td>
+      <td>3322</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>Missing or unresolved family/parent links</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Computable exposure windows</td>
+      <td>3322</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>Missing or invalid conception/birth dates</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Observed age-12 literacy outcome</td>
+      <td>3049</td>
+      <td>273</td>
+      <td>91.78</td>
+      <td>Age-12 literacy missing</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Conventional cohort analysis</td>
+      <td>3049</td>
+      <td>0</td>
+      <td>91.78</td>
+      <td>Blocking linkage issue or missing outcome</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Children in multi-child families</td>
+      <td>2223</td>
+      <td>826</td>
+      <td>66.92</td>
+      <td>Single-child family</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Children in exposure-discordant sibling families</td>
+      <td>1220</td>
+      <td>1003</td>
+      <td>36.72</td>
+      <td>No within-family exposure variation</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Sibling fixed-effects analysis</td>
+      <td>1125</td>
+      <td>95</td>
+      <td>33.87</td>
+      <td>Ineligible sibling set or missing outcome</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Prediction evaluation</td>
+      <td>3049</td>
+      <td>0</td>
+      <td>91.78</td>
+      <td>Missing target or blocking linkage issue</td>
+    </tr>
+  </tbody>
+</table></section><section><h2>Run metadata</h2><pre>{
+  &quot;analysis_configuration_hash&quot;: &quot;a988a08f3822d1a4d3e7a667921cd5d11cf31d3c7a44df109ec923d2cb48cc46&quot;,
+  &quot;blocking_issue_count&quot;: 99,
+  &quot;creation_timestamp_utc&quot;: &quot;2026-07-15T18:23:34.545890+00:00&quot;,
+  &quot;input_file_hashes&quot;: {
+    &quot;children_births_corrupted.csv&quot;: &quot;7b579a17f41ac1c555f6fe9355d9c6ee043dcf7340940695e3c3d29ab3872ad2&quot;,
+    &quot;education_assessments_corrupted.csv&quot;: &quot;f492592d09fcce9e36090a3bb23b890d936f437e7e746ce052f16dca6e580280&quot;,
+    &quot;families_corrupted.csv&quot;: &quot;6800e6b24388e01a3f4687df0a21eebf59a040131a5f242d143cd54f328b569e&quot;,
+    &quot;offspring_outcomes_corrupted.csv&quot;: &quot;eef59dfcb89e809974748a65a938efba647932798d7b57e03dfcc55bb552a8b9&quot;,
+    &quot;parental_mh_events_corrupted.csv&quot;: &quot;52141df0abff260309a9bfc78e28000317af1c6647f77f504048b99eb539f57b&quot;,
+    &quot;parents_corrupted.csv&quot;: &quot;6133eef3056c14a9177f73ee72d25392113c3f712089b42c0c945e73a223e162&quot;
+  },
+  &quot;issue_count&quot;: 99,
+  &quot;repository_version&quot;: &quot;0.1.0&quot;,
+  &quot;rulebook_version&quot;: &quot;1.0.0&quot;,
+  &quot;seed&quot;: 20260715
+}</pre></section>
+<footer>Research and methods demonstration only. Every person, family, event, date and outcome in this repository is entirely synthetic and computer-generated. The repository contains no patient, family, education, hospital, suicide, NAPLAN, Curtin, Australian, United Kingdom or linked administrative data. It is not a clinical, educational or public-sector decision-support system; it must not be used to assess, rank or intervene on any real person or family; and it does not demonstrate data access, clinical validity, causal identification, regulatory compliance or real-world feasibility.</footer></body></html>

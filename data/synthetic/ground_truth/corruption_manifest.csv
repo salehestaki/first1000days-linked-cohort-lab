@@ -1,0 +1,64 @@
+corruption_id,table,record_id,field,original_value,corrupted_value,expected_rule_id,description
+CORR-001,families,FAM-000001,region_code,REGION_A,REGION_INVALID,FAM001,Invalid region category
+CORR-002,families,FAM-000002,region_code,REGION_A,REGION_INVALID,FAM001,Invalid region category
+CORR-003,families,FAM-000003,region_code,REGION_B,REGION_INVALID,FAM001,Invalid region category
+CORR-004,families,FAM-000004,socioeconomic_quintile_demo,1,9,FAM002,Invalid socioeconomic quintile
+CORR-005,families,FAM-000005,socioeconomic_quintile_demo,5,9,FAM002,Invalid socioeconomic quintile
+CORR-006,families,FAM-000006,socioeconomic_quintile_demo,4,9,FAM002,Invalid socioeconomic quintile
+CORR-007,parents,P-000001,parent_role,father,guardian,PAR001,Invalid parent role
+CORR-008,parents,P-000002,parent_role,father,guardian,PAR001,Invalid parent role
+CORR-009,parents,P-000003,parent_role,father,guardian,PAR001,Invalid parent role
+CORR-010,parents,P-000007,parent_role,father,mother,PAR002,Duplicate mother-role record in family
+CORR-011,parents,P-000008,parent_role,father,mother,PAR002,Duplicate mother-role record in family
+CORR-012,parents,P-000009,parent_role,father,mother,PAR002,Duplicate mother-role record in family
+CORR-013,children_births,CH-000001,child_id,unique,CH-000001,KEY001,Duplicate child identifier
+CORR-014,children_births,CH-000002,child_id,unique,CH-000002,KEY001,Duplicate child identifier
+CORR-015,children_births,CH-000003,child_id,unique,CH-000003,KEY001,Duplicate child identifier
+CORR-016,children_births,CH-000011,family_id,FAM-000007,<missing>,KEY002,Missing family identifier
+CORR-017,children_births,CH-000012,family_id,FAM-000008,<missing>,KEY002,Missing family identifier
+CORR-018,children_births,CH-000013,family_id,FAM-000008,<missing>,KEY002,Missing family identifier
+CORR-019,children_births,CH-000021,mother_id,M-000014,M-990020,CH001,Orphan mother identifier
+CORR-020,children_births,CH-000022,mother_id,M-000014,M-990021,CH001,Orphan mother identifier
+CORR-021,children_births,CH-000023,mother_id,M-000015,M-990022,CH001,Orphan mother identifier
+CORR-022,children_births,CH-000031,father_id,P-000020,P-990030,CH002,Orphan father identifier
+CORR-023,children_births,CH-000032,father_id,P-000021,P-990031,CH002,Orphan father identifier
+CORR-024,children_births,CH-000033,father_id,P-000021,P-990032,CH002,Orphan father identifier
+CORR-025,children_births,CH-000041,mother_id,M-000025,M-000006,CH003,Mother belongs to another family
+CORR-026,children_births,CH-000042,mother_id,M-000026,M-000007,CH003,Mother belongs to another family
+CORR-027,children_births,CH-000043,mother_id,M-000026,M-000001,CH003,Mother belongs to another family
+CORR-028,children_births,CH-000051,father_id,P-000031,M-000031,CH004,Mother and father identifiers are identical
+CORR-029,children_births,CH-000052,father_id,P-000032,M-000032,CH004,Mother and father identifiers are identical
+CORR-030,children_births,CH-000053,father_id,P-000032,M-000032,CH004,Mother and father identifiers are identical
+CORR-031,children_births,CH-000061,conception_date_demo,2001-10-28,2002-08-03,CHR001,Conception occurs after birth
+CORR-032,children_births,CH-000062,conception_date_demo,2003-06-14,2004-04-16,CHR001,Conception occurs after birth
+CORR-033,children_births,CH-000063,conception_date_demo,2005-06-20,2006-04-16,CHR001,Conception occurs after birth
+CORR-034,children_births,CH-000018,birth_order,2,1,SIB001,Duplicate singleton birth order
+CORR-035,children_births,CH-000022,birth_order,2,1,SIB001,Duplicate singleton birth order
+CORR-036,children_births,CH-000025,birth_order,2,1,SIB001,Duplicate singleton birth order
+CORR-037,parental_mh_events,PMH-000001,event_id,unique,PMH-000001,KEY003,Duplicate event identifier
+CORR-038,parental_mh_events,PMH-000002,event_id,unique,PMH-000002,KEY003,Duplicate event identifier
+CORR-039,parental_mh_events,PMH-000003,event_id,unique,PMH-000003,KEY003,Duplicate event identifier
+CORR-040,parental_mh_events,PMH-000011,event_date_demo,1999-09-24,not-a-date,EVT001,Invalid parental event date
+CORR-041,parental_mh_events,PMH-000012,event_date_demo,1998-11-05,not-a-date,EVT001,Invalid parental event date
+CORR-042,parental_mh_events,PMH-000013,event_date_demo,2000-04-23,not-a-date,EVT001,Invalid parental event date
+CORR-043,education_assessments,EDU-000001,assessment_id,unique,EDU-000001,KEY004,Duplicate assessment identifier
+CORR-044,education_assessments,EDU-000002,assessment_id,unique,EDU-000002,KEY004,Duplicate assessment identifier
+CORR-045,education_assessments,EDU-000003,assessment_id,unique,EDU-000003,KEY004,Duplicate assessment identifier
+CORR-046,education_assessments,EDU-000011,assessment_age_years,10,9,EDU001,Invalid assessment age
+CORR-047,education_assessments,EDU-000012,assessment_age_years,10,9,EDU001,Invalid assessment age
+CORR-048,education_assessments,EDU-000013,assessment_age_years,12,9,EDU001,Invalid assessment age
+CORR-049,education_assessments,EDU-000023,standardised_score_demo,-0.8455,<missing>,EDU002,Observed assessment has missing score
+CORR-050,education_assessments,EDU-000024,standardised_score_demo,-0.2124,<missing>,EDU002,Observed assessment has missing score
+CORR-051,education_assessments,EDU-000025,standardised_score_demo,-0.1132,<missing>,EDU002,Observed assessment has missing score
+CORR-052,education_assessments,EDU-000067,standardised_score_demo,,0.25,EDU003,Missing assessment has populated score
+CORR-053,education_assessments,EDU-000070,standardised_score_demo,,0.25,EDU003,Missing assessment has populated score
+CORR-054,education_assessments,EDU-000071,standardised_score_demo,,0.25,EDU003,Missing assessment has populated score
+CORR-055,education_assessments,EDU-000031,standardised_score_demo,0.7585,8.0,EDU004,Score outside plausible synthetic range
+CORR-056,education_assessments,EDU-000032,standardised_score_demo,0.5408,8.0,EDU004,Score outside plausible synthetic range
+CORR-057,education_assessments,EDU-000033,standardised_score_demo,-1.3378,8.0,EDU004,Score outside plausible synthetic range
+CORR-058,offspring_outcomes,OUT-000001,event_date_demo,,2007-12-10,OUT001,Outcome event before birth
+CORR-059,offspring_outcomes,OUT-000002,event_date_demo,,2007-12-10,OUT001,Outcome event before birth
+CORR-060,offspring_outcomes,OUT-000003,event_date_demo,,2009-07-21,OUT001,Outcome event before birth
+CORR-061,offspring_outcomes,OUT-000012,event_date_demo,2022-03-04,<missing>,OUT002,Observed outcome has missing event date
+CORR-062,offspring_outcomes,OUT-000026,event_date_demo,2022-05-14,<missing>,OUT002,Observed outcome has missing event date
+CORR-063,offspring_outcomes,OUT-000046,event_date_demo,2017-04-06,<missing>,OUT002,Observed outcome has missing event date
