@@ -3,8 +3,8 @@ title: first1000days-linked-cohort-lab
 message: "Please cite this software as a synthetic methods demonstration."
 type: software
 authors:
-  - family-names: Organi
-    given-names: Saleh Estaki
+  - family-names: Estaki Organi
+    given-names: Saleh
 version: 0.1.0
 date-released: 2026-07-15
 repository-code: "https://github.com/salehestaki/first1000days-linked-cohort-lab"
