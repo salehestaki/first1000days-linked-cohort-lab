@@ -13,11 +13,11 @@ from urllib.request import urlopen
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
+CHROME_PATH = Path("C:/Program Files/Google/Chrome/Application/chrome.exe")
 
 
 def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     """Load a broadly available system font and fall back safely."""
-
     candidates = [
         Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
         Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
@@ -30,7 +30,6 @@ def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFo
 
 def placeholder(path: Path, title: str, bullets: list[str], accent: tuple[int, int, int]) -> None:
     """Create a clean preview card when browser automation is unavailable."""
-
     width, height = 1440, 900
     image = Image.new("RGB", (width, height), (245, 247, 250))
     draw = ImageDraw.Draw(image)
@@ -71,7 +70,6 @@ def placeholder(path: Path, title: str, bullets: list[str], accent: tuple[int, i
 
 def streamlit_log_tail(process: subprocess.Popen[str], limit: int = 2000) -> str:
     """Return the most useful available tail of Streamlit startup output."""
-
     if process.stdout is None:
         return "No Streamlit stdout was captured."
     output = process.stdout.read()
@@ -82,19 +80,82 @@ def streamlit_log_tail(process: subprocess.Popen[str], limit: int = 2000) -> str
 
 
 def wait_for_health(process: subprocess.Popen[str], url: str, timeout: int = 60) -> None:
+    """Wait for Streamlit health endpoint to become ready."""
     start = time.time()
     while time.time() - start < timeout:
         if process.poll() is not None:
             tail = streamlit_log_tail(process)
             raise RuntimeError(f"Streamlit exited before becoming ready (exit code {process.returncode}).\n{tail}")
         try:
-            with urlopen(url, timeout=2) as response:  # noqa: S310 - local health endpoint only
+            with urlopen(url, timeout=2) as response:
                 if response.status == 200:
                     return
         except Exception:
             time.sleep(0.5)
     tail = streamlit_log_tail(process)
     raise TimeoutError(f"Streamlit health endpoint did not become ready: {url}\n{tail}")
+
+
+def capture_screenshots_with_playwright(output: Path, port: int) -> None:
+    """Capture screenshots using Playwright with Chrome."""
+    from playwright.sync_api import sync_playwright
+    
+    if not CHROME_PATH.exists():
+        raise FileNotFoundError(f"Chrome not found at {CHROME_PATH}. Please install Google Chrome.")
+    
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(
+            executable_path=str(CHROME_PATH),
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+                "--window-size=1440,900"
+            ]
+        )
+        
+        try:
+            context = browser.new_context(
+                viewport={"width": 1440, "height": 900},
+                device_scale_factor=1
+            )
+            page = context.new_page()
+            
+            # صفحه اصلی
+            print("📄 Navigating to main page...")
+            page.goto(f"http://127.0.0.1:{port}", wait_until="networkidle")
+            
+            # ⭐ صبر ۱۰ ثانیه برای بارگذاری کامل
+            print("⏳ Waiting 10 seconds for page to fully load...")
+            time.sleep(20)
+            
+            # اسکرین‌شات اصلی
+            print("📸 Capturing overview.png...")
+            page.screenshot(path=str(output / "overview.png"), full_page=True)
+            print("✅ overview.png captured")
+            
+            # اسکرین‌شات سایر صفحات
+            for label, filename in [
+                ("Causal Design Lab", "causal_design_lab.png"),
+                ("Precision Risk Evaluation", "prediction_evaluation.png"),
+            ]:
+                try:
+                    print(f"📄 Navigating to '{label}'...")
+                    page.get_by_text(label, exact=True).first.click()
+                    
+                    # ⭐ صبر ۱۰ ثانیه برای بارگذاری هر صفحه
+                    print("⏳ Waiting 10 seconds for page to load...")
+                    time.sleep(20)
+                    
+                    print(f"📸 Capturing {filename}...")
+                    page.screenshot(path=str(output / filename), full_page=True)
+                    print(f"✅ {filename} captured")
+                except Exception as e:
+                    print(f"⚠️ Could not capture {filename}: {e}")
+            
+        finally:
+            browser.close()
 
 
 def main() -> None:
@@ -104,6 +165,8 @@ def main() -> None:
     args = parser.parse_args()
     output = args.root / "assets" / "screenshots"
     output.mkdir(parents=True, exist_ok=True)
+    
+    # راه‌اندازی Streamlit
     command = [
         sys.executable,
         "-m",
@@ -114,64 +177,80 @@ def main() -> None:
         str(args.port),
         "--server.headless",
         "true",
+        "--logger.level",
+        "error",
     ]
-    process = subprocess.Popen(command, cwd=args.root, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    
+    process = subprocess.Popen(
+        command, 
+        cwd=args.root, 
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.STDOUT, 
+        text=True,
+        encoding='utf-8',
+        errors='ignore'
+    )
+    
     try:
+        print(f"⏳ Starting Streamlit on port {args.port}...")
         wait_for_health(process, f"http://127.0.0.1:{args.port}/_stcore/health")
-        from playwright.sync_api import sync_playwright
-
-        with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(headless=True, executable_path="/usr/bin/chromium", args=["--no-sandbox"])
-            page = browser.new_page(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
-            page.goto(f"http://127.0.0.1:{args.port}", wait_until="networkidle")
-            page.screenshot(path=str(output / "overview.png"), full_page=True)
-            for label, filename in [
-                ("Causal Design Lab", "causal_design_lab.png"),
-                ("Precision Risk Evaluation", "prediction_evaluation.png"),
-            ]:
-                page.get_by_text(label, exact=True).first.click()
-                page.wait_for_timeout(2500)
-                page.screenshot(path=str(output / filename), full_page=True)
-            browser.close()
-        print(f"Captured screenshots in {output}")
+        print("✅ Streamlit is ready!")
+        
+        print("📸 Capturing screenshots with Playwright...")
+        capture_screenshots_with_playwright(output, args.port)
+        print(f"🎉 All screenshots captured successfully in {output}")
+        
+    except FileNotFoundError as e:
+        print(f"❌ {e}")
+        print("💡 Please install Google Chrome from: https://www.google.com/chrome/")
+        create_placeholders(output)
+        
     except Exception as exc:
-        placeholder(
-            output / "overview.png",
-            "Overview",
-            [
-                "Synthetic linked-cohort construction with transparent first-1,000-days definitions.",
-                "Linkage-quality auditing, cohort flow reporting, and architecture overview.",
-                "No real patient, education, hospital, or administrative data.",
-            ],
-            accent=(32, 99, 155),
-        )
-        placeholder(
-            output / "causal_design_lab.png",
-            "Causal Design Lab",
-            [
-                "Side-by-side synthetic comparison of naive, adjusted, and sibling designs.",
-                "Known simulation truth retained outside routine analyses.",
-                "Results labelled as methods demonstration rather than empirical inference.",
-            ],
-            accent=(34, 139, 120),
-        )
-        placeholder(
-            output / "prediction_evaluation.png",
-            "Precision Risk Evaluation",
-            [
-                "Family-grouped discrimination, calibration, and subgroup summaries.",
-                "Aggregate evaluation only with no individual risk ranking or intervention use.",
-                "Synthetic early-life educational-trajectory target rather than suicide prediction.",
-            ],
-            accent=(180, 95, 45),
-        )
-        print(f"Browser capture failed; polished preview cards created instead: {exc}")
+        print(f"⚠️ Browser capture failed; creating preview cards instead: {exc}")
+        create_placeholders(output)
+        
     finally:
         process.terminate()
         try:
-            process.wait(timeout=10)
+            process.wait(timeout=20)
         except subprocess.TimeoutExpired:
             process.kill()
+            print("⚠️ Streamlit process killed")
+
+
+def create_placeholders(output: Path) -> None:
+    """Create placeholder images for all pages."""
+    placeholder(
+        output / "overview.png",
+        "Overview",
+        [
+            "Synthetic linked-cohort construction with transparent first-1,000-days definitions.",
+            "Linkage-quality auditing, cohort flow reporting, and architecture overview.",
+            "No real patient, education, hospital, or administrative data.",
+        ],
+        accent=(32, 99, 155),
+    )
+    placeholder(
+        output / "causal_design_lab.png",
+        "Causal Design Lab",
+        [
+            "Side-by-side synthetic comparison of naive, adjusted, and sibling designs.",
+            "Known simulation truth retained outside routine analyses.",
+            "Results labelled as methods demonstration rather than empirical inference.",
+        ],
+        accent=(34, 139, 120),
+    )
+    placeholder(
+        output / "prediction_evaluation.png",
+        "Precision Risk Evaluation",
+        [
+            "Family-grouped discrimination, calibration, and subgroup summaries.",
+            "Aggregate evaluation only with no individual risk ranking or intervention use.",
+            "Synthetic early-life educational-trajectory target rather than suicide prediction.",
+        ],
+        accent=(180, 95, 45),
+    )
+    print("📋 Polished preview cards created successfully")
 
 
 if __name__ == "__main__":
