@@ -65,10 +65,11 @@ def load_yaml(path: str | Path) -> dict[str, Any]:
     return data
 
 
-def load_project_config(root: Path | None = None) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def load_project_config(root: str | Path | None = None) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     """Load simulation, analysis, and linkage configuration files."""
 
-    paths = ProjectPaths(root or repository_root())
+    resolved_root = Path(root) if root is not None else repository_root()
+    paths = ProjectPaths(resolved_root)
     return (
         load_yaml(paths.config / "simulation.yml"),
         load_yaml(paths.config / "analysis.yml"),

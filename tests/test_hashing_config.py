@@ -19,6 +19,13 @@ def test_config_and_repository_root(repo_root):
     assert linkage["rulebook_version"] == "1.0.0"
 
 
+def test_load_project_config_accepts_string_root(repo_root):
+    simulation, analysis, linkage = load_project_config(str(repo_root))
+    assert simulation["seed"] == 20260715
+    assert analysis["repository_version"] == "0.1.0"
+    assert linkage["rulebook_version"] == "1.0.0"
+
+
 def test_yaml_errors_and_hashes(tmp_path):
     with pytest.raises(FileNotFoundError):
         load_yaml(tmp_path / "missing.yml")
